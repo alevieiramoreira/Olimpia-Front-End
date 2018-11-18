@@ -1,0 +1,85 @@
+/*Css pra definir design da nav */
+.nav-link {
+    display: relative;
+    padding: .2rem;
+    text-transform: uppercase;
+    margin-right: 1rem;
+    position: fixed;
+}
+
+.nav-link:focus, .nav-link a:hover {
+    border-bottom: solid 2px;
+    border-color: #cb8933;
+    -webkit-transition: all .2s;
+    transition: all .5s;
+}
+/*Essas são as caixas que são trocadas pela função Javascript Switch.js*/
+
+#box1{
+    background-color: #fff;
+    border: solid .5px;
+    border-color: #cfcecf;
+    margin: auto;
+    border-radius: 1rem;
+}
+#box2{  
+ 
+    padding: 2rem;
+    border-radius: 1rem;
+    
+}
+#box3{
+   
+
+    padding: 2rem;
+    border-radius: 1rem;
+
+}
+
+#box4 {
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.form-width {
+    padding: 3rem;
+    margin: auto;
+    border: solid .5px;
+    border-color: #cfcecf;
+}
+
+/*O conteúdo das caixas trocadas*/
+
+
+
+.title-item{
+    width: 20%;
+    text-decoration: none;
+    float: left;
+    font-size: 2rem;
+}
+
+.btn-new{
+    background-color: #6b696b;
+    color: white;
+    border: solid 1px;
+    margin-top: 1rem;;
+   
+}
+
+.btn-new-user {
+    color: black;
+    background-color: white;
+    border: solid 1px;
+}
+
+.box-right {
+float: right;
+
+}
+
+button.btn-nav {
+    color: black;
+    background-color: whitesmoke;
+    margin: auto;
+}
