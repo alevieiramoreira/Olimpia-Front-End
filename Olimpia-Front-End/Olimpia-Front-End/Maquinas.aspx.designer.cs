@@ -10,7 +10,7 @@
 namespace Olimpia_Front_End {
     
     
-    public partial class Salas {
+    public partial class Maquinas {
         
         /// <summary>
         /// Controle btnLogoutUsers.
@@ -22,93 +22,75 @@ namespace Olimpia_Front_End {
         protected global::System.Web.UI.WebControls.Button btnLogoutUsers;
         
         /// <summary>
-        /// Controle PlaceHolder2.
+        /// Controle PlaceHolder3.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder2;
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder3;
         
         /// <summary>
-        /// Controle txtClassName.
+        /// Controle numClassMachine.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtClassName;
+        protected global::System.Web.UI.WebControls.TextBox numClassMachine;
         
         /// <summary>
-        /// Controle txtIdUser.
+        /// Controle btnViewMachine.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdUser;
+        protected global::System.Web.UI.WebControls.Button btnViewMachine;
         
         /// <summary>
-        /// Controle btnInsertClass.
+        /// Controle numMachineEdit.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnInsertClass;
+        protected global::System.Web.UI.WebControls.TextBox numMachineEdit;
         
         /// <summary>
-        /// Controle numClassEdit.
+        /// Controle txtNewClassEdit.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numClassEdit;
+        protected global::System.Web.UI.WebControls.TextBox txtNewClassEdit;
         
         /// <summary>
-        /// Controle txtClassNameEdit.
+        /// Controle btnEditMachine.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtClassNameEdit;
+        protected global::System.Web.UI.WebControls.Button btnEditMachine;
         
         /// <summary>
-        /// Controle txtRespEdit.
+        /// Controle numDelMachine.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRespEdit;
+        protected global::System.Web.UI.WebControls.TextBox numDelMachine;
         
         /// <summary>
-        /// Controle btnEditClass.
+        /// Controle btnDeleteMachine.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditClass;
-        
-        /// <summary>
-        /// Controle numDelClass.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numDelClass;
-        
-        /// <summary>
-        /// Controle btnDeleteClass.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDeleteClass;
+        protected global::System.Web.UI.WebControls.Button btnDeleteMachine;
     }
 }

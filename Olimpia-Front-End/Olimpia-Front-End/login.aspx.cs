@@ -22,10 +22,16 @@ namespace Olimpia_Front_End
         protected void btnLogar_Click(object sender, EventArgs e)
         {
             Login();
+
+
         }
 
         private void Login()
         {
+            // Recupera elementos do formulario
+            string usuario = Request.Form["txtUserLogin"];
+            string senha = Request.Form["txtPassLogin"];
+
             string conector = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
             SqlConnection conn1 = new SqlConnection(conector);
             string userAd, passAd, user, pass;
@@ -54,12 +60,14 @@ namespace Olimpia_Front_End
                     if (userAd == txtUserLogin.Text && passAd == txtPassLogin.Text)
                     {
                         this.lblMensagem.Text = "Admin logado com sucesso!.";
+                        Session["UserName"] = usuario;
                         Response.Redirect("Usuarios.aspx");
                     }
 
                     else if (user == txtUserLogin.Text && pass == txtPassLogin.Text)
                     {
                         this.lblMensagem.Text = "Logado com sucesso!.";
+                        Session["UserName"] = usuario;
                         Response.Redirect("Salas.aspx");
                     }
 

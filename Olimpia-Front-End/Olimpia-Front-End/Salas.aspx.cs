@@ -16,6 +16,18 @@ namespace Olimpia_Front_End
         #region Gerando DataTable
         protected void Page_Load(object sender, EventArgs e)
         {
+            #region Recuperando Sessão
+            // Recupera usuario da sessão
+            string usuario = (string)Session["UserName"];
+
+            // Sessão for invalida
+            if (usuario == null)
+            {
+                Response.Redirect("login.aspx");
+            }
+
+            #endregion
+
             if (!this.IsPostBack)
             {
 
@@ -149,12 +161,12 @@ namespace Olimpia_Front_End
             using (SqlConnection conn12 = new SqlConnection(strConn))
             {
                 conn12.Open();
-                using (SqlCommand cmdClassEdit = new SqlCommand("UPDATE Class SET Class=@EditClassName WHERE idClass=@idClassEdit", conn12))
+                using (SqlCommand cmdClassEdit = new SqlCommand("UPDATE Class SET Class=@EditClassName, IdUsers=@EditUserid WHERE idClass=@idClassEdit", conn12))
                 {
                     cmdClassEdit.Parameters.AddWithValue("@EditClassName", txtClassNameEdit.Text);
-                   // cmdClassEdit.Parameters.AddWithValue("@EditUserId", txtRespEdit.Text);
+                    cmdClassEdit.Parameters.AddWithValue("@EditUserId", txtRespEdit.Text);
 
-                    cmdClassEdit.Parameters.AddWithValue("@idClassEdit", numClassEdit);
+                    cmdClassEdit.Parameters.AddWithValue("@idClassEdit", numClassEdit.Text);
 
                     cmdClassEdit.ExecuteNonQuery();
                 
@@ -163,6 +175,15 @@ namespace Olimpia_Front_End
 
 
             Response.Redirect("Salas.aspx");
+        }
+        #endregion
+
+        #region Realizando Logout
+        protected void btnLogoutUsers_Click(object sender, EventArgs e)
+        {
+            // Invalida Sessão
+            Session.Abandon();
+            Response.Redirect("login.aspx");
         }
         #endregion
     }

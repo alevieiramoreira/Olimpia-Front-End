@@ -83,3 +83,7 @@ button.btn-nav {
     background-color: whitesmoke;
     margin: auto;
 }
+
+.btn-logout {
+    background: none;
+}

@@ -76,6 +76,7 @@
     <Content Include="js\changeBox.js" />
     <Content Include="js\sourceTable.js" />
     <Content Include="js\switch.js" />
+    <Content Include="Maquinas.aspx" />
     <Content Include="modelBox.js" />
     <Content Include="responsive\bootstrap\css\bootstrap.css.map" />
     <Content Include="responsive\bootstrap\css\bootstrap.min.css.map" />
@@ -153,6 +154,13 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Maquinas.aspx.cs">
+      <DependentUpon>Maquinas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Maquinas.aspx.designer.cs">
+      <DependentUpon>Maquinas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Salas.aspx.cs">

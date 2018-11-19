@@ -36,7 +36,7 @@
                 <a class="navbar-brand" href="home.aspx">Olímpia</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav">
                     <li class="nav-link"><a href="index.html">Home</a></li>
                     <li class="nav-link"><a href="faq.aspx">F.A.Q</a></li>
                     <li class="nav-link"><a href="contate.aspx">Contate-nos</a></li>
@@ -44,22 +44,24 @@
 
 
 
-                    <div class="btn-group">
-
-                        <button type="button" class="dropdown btn-new btn dropdown-toggle" data-toggle="dropdown">Opções<span class="caret"></span></button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Suas Salas</a></li>
-                            <li><a href="#">Suas Máquinas</a></li>
-                            <li><a href="#">Infos Adicionais</a></li>
-                          
                         </ul>
-                    </div>
+        <form runat="server">
+                    <div class="btn-group navbar-right">
+
+                        <button type="button" class="dropdown btn-new btn dropdown-toggle" data-toggle="dropdown"> <% string usuario = (string)Session["UserName"];
+               Response.Write("Bem Vindo: " + usuario); %><span class="caret"></span></button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li><a href="Salas.aspx">Suas Salas</a></li>
+                            <li><a href="Maquinas.aspx">Suas Máquinas</a></li>
+                            <li><a href="Usuarios.aspx">Seus Usuários</a></li>
+                            <li><asp:Button runat="server" cssClass="dropdown-item" Text="Logout" ID="btnLogoutUsers" onclick="btnLogoutUsers_Click" BackColor="Transparent"/></li>
+                       </ul>
+                  </div>
             </div>
         </div>
-        </ul>
-        
-      </div>
     </div>
+ </div>
+        
     </nav>
     <br>
 
@@ -68,7 +70,7 @@
         <button type="button" class="btn-new-user" id="btnNew" onclick="newUser()" style="background-color: black; color: white; border: solid 1px; border-radius: 1rem; padding: 0.6rem; ">Cadastrar Novo Usuário...</button>
         <button type="button" class="btn-switch" onclick="userEdit()" style="background-color: black; color: white; border: solid 1px; border-radius: 1rem; padding: 0.6rem; ">Editar</button>
         <button type="button" class="btn-switch" onclick="userDelete()" style="background-color: black; color: white; border: solid 1px; border-radius: 1rem; padding: 0.6rem; ">Excluir</button>
-        <form runat="server">
+        <button type="button" class="btn-switch" onclick="userView()" style="background-color: black; color: white; border: solid 1px; border-radius: 1rem; padding: 0.6rem; ">Filtrar....</button>
 
             <div id="table_div"></div>
             <div id="box1">
@@ -142,6 +144,23 @@
                     <button type="button" class="btn btn-primary" id="btnCancel1" onclick="cancelDelete()">Cancelar</button>
     </div>
     
+       <div id="box5" style="display: none">
+
+        <div class="form-group">
+            <label>Digite a ID do usuário para ver suas salas</label>
+            <asp:TextBox class="form-control" ID="numUserView" placeholder="Apenas números" runat="server" />
+        </div>
+        
+
+             <asp:Button Text="Filtrar" runat="server" CssClass="btn btn-primary" ID="btnUserView" OnClick="btnUserView_Click" />
+                    <button type="button" class="btn btn-primary" id="btnCancel1" onclick="cancelDelete()">Cancelar</button>
+    </div>
+
+        <div id="box6">
+      
+
+              <asp:PlaceHolder  ID = "PlaceHolder4" runat="server" /> 
+        </div>
 
     </form>      
   

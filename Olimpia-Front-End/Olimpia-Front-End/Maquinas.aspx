@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Salas.aspx.cs" Inherits="Olimpia_Front_End.Salas" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Maquinas.aspx.cs" Inherits="Olimpia_Front_End.Maquinas" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Olimpia - Suas Salas</title>
+    <title>Olimpia - Suas Máquinas</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -63,15 +63,15 @@
     <br>
 
     <div class="container">
-        <h1>Gerenciamento de Salas</h1>
-        <button type="button" class="btn-new-user" id="btnNew" onclick="newUser()" style="background-color: black; color: white; border: solid 1px; border-radius: 1rem; padding: 0.6rem; ">Cadastrar Nova Sala...</button>
-        <button type="button" class="btn-switch" onclick="userEdit()" style="background-color: black; color: white; border: solid 1px; border-radius: 1rem; padding: 0.6rem; ">Editar</button>
+        <h1>Gerenciamento de Máquinas</h1>
+        <button type="button" class="btn-new-user" id="btnNew" onclick="newUser()" style="background-color: black; color: white; border: solid 1px; border-radius: 1rem; padding: 0.6rem; ">Visualizar Máquina...</button>
+        <button type="button" class="btn-switch" onclick="userEdit()" style="background-color: black; color: white; border: solid 1px; border-radius: 1rem; padding: 0.6rem; ">Inserir Classe</button>
         <button type="button" class="btn-switch" onclick="userDelete()" style="background-color: black; color: white; border: solid 1px; border-radius: 1rem; padding: 0.6rem; ">Excluir</button>
-   
+
 
             <div id="table_div"></div>
             <div id="box1">
-                           <asp:PlaceHolder  ID = "PlaceHolder2" runat="server" /> 
+                           <asp:PlaceHolder  ID = "PlaceHolder3" runat="server" /> 
               
             </div>
           
@@ -79,63 +79,55 @@
          
     </div>
                
-    <!--input de cadastrar salas-->
+    <!--input de cadastrar salas pras máquinas-->
     <div id="box2" style="display: none;">
         <div class="form-group">
-            <label>Nome da Sala</label>
-            <asp:TextBox class="form-control" placeholder="Ex: Digital 1" ID="txtClassName" runat="server" />
+            <label>Digite a ID da máquina que deseja visualizar</label>
+            <asp:TextBox class="form-control" placeholder="Ex: Digital 1" ID="numClassMachine" runat="server" />
         </div>
-        <div class="form-group">
-            <label>ID do Responsável pela Sala</label>
-            <asp:TextBox class="form-control" placeholder="Número de exemplo" ID="txtIdUser" runat="server" />
-        </div>
+       
       
 
-        <asp:Button Text="Cadastrar" type="submit" CssClass="btn btn-primary" runat="server" ID="btnInsertClass" OnClick="btnInsertClass_Click" />
+        <asp:Button Text="Visualizar..." type="submit" CssClass="btn btn-primary" runat="server" ID="btnViewMachine" OnClick="btnViewMachine_Click" />
         <button type="button" class="btn btn-primary" id="btnCancel" onclick="cancelUser()">Cancelar</button>
 
     </div>
 
-    <!--input de editar sala-->
+    <!--input de editar Classe da máquina-->
 
     <div id="box3" style="display: none;">
         <div class="form-group">
-            <label>Digite a ID da sala que deseja editar</label>
-            <asp:TextBox class="form-control" placeholder="Nome" runat="server" ID="numClassEdit" />
+            <label>Digite a ID da Máquina que deseja editar a Sala </label>
+            <asp:TextBox class="form-control" placeholder="Nome" runat="server" ID="numMachineEdit" />
         </div>
 
-        <div class="form-group">
-            <label>Nome da Sala</label>
-            <asp:TextBox class="form-control" placeholder="Nome" ID="txtClassNameEdit" runat="server" />
-        </div>
 
            <div class="form-group">
-            <label>ID do Responsável</label>
-            <asp:TextBox class="form-control" placeholder="Apenas números" ID="txtRespEdit" runat="server" />
+            <label>ID da Sala</label>
+            <asp:TextBox class="form-control" placeholder="Apenas números" ID="txtNewClassEdit" runat="server" />
         </div>
        
        
 
-        <asp:Button Text="Editar" runat="server" CssClass="btn btn-primary" ID="btnEditClass" OnClick="btnEditClass_Click" />
+        <asp:Button Text="Editar" runat="server" CssClass="btn btn-primary" ID="btnEditMachine" OnClick="btnEditMachine_Click" />
         <button type="button" class="btn btn-primary" id="btnCancel1" onclick="cancelEdit()">Cancelar</button>
     </div>
     
     
 
-     <!--input de excluir usuário-->
+     <!--input de excluir máquina-->
 
     <div id="box4" style="display: none">
 
         <div class="form-group">
-            <label>Digite a ID da Sala que deseja Deletar</label>
-            <asp:TextBox class="form-control" ID="numDelClass" placeholder="Apenas números" runat="server" />
+            <label>Digite a ID da Máquina que deseja Deletar</label>
+            <asp:TextBox class="form-control" ID="numDelMachine" placeholder="Apenas números" runat="server" />
         </div>
         
 
-             <asp:Button Text="Deletar" runat="server" CssClass="btn btn-primary" ID="btnDeleteClass" OnClick="btnDeleteClass_Click" />
+             <asp:Button Text="Deletar" runat="server" CssClass="btn btn-primary" ID="btnDeleteMachine" OnClick="btnDeleteMachine_Click" />
                     <button type="button" class="btn btn-primary" id="btnCancel1" onclick="cancelDelete()">Cancelar</button>
     </div>
-    
 
     </form>      
 </body>
