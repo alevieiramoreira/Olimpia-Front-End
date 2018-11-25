@@ -25,7 +25,7 @@ Usem bastante o Inspecionar no navegador, dêem um check na responsividade. ****
 
     <link rel="shortcut icon" href="img/logoblack.png">
 
-    <title>Olimpia</title>
+    <title>Olimpia | Login</title>
 
     <!-- Bootstrap CSS -->
     <link href="responsive/bootstrap/css/bootstrap.min.css" rel="stylesheet">

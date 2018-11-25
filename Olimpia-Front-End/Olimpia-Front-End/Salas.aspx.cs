@@ -10,12 +10,18 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Olimpia_Front_End
-{   
+{
     public partial class Salas : System.Web.UI.Page
     {
-        #region Gerando DataTable
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Alimentando as DropDownLists da página
+            feedDdlUserSala();
+            feedDdlUserSalaEdit();
+            feedDdlSalaEdit();
+            feedDdlSalaDel();
+
             #region Recuperando Sessão
             // Recupera usuario da sessão
             string usuario = (string)Session["UserName"];
@@ -27,7 +33,7 @@ namespace Olimpia_Front_End
             }
 
             #endregion
-
+            #region Gerando DataTable
             if (!this.IsPostBack)
             {
 
@@ -82,7 +88,7 @@ namespace Olimpia_Front_End
             string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
             using (SqlConnection con = new SqlConnection(strConn))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT IdClass, Class, NumberOfMachines, IdUsers FROM Class"))
+                using (SqlCommand cmd = new SqlCommand($"SELECT Class.Class 'Nome da Sala', Class.NumberOfMachines 'N° de Máquinas', Users.UserName 'Responsável' FROM Class, Users WHERE Users.idUsers=Class.idUsers and Class.idCompany='{getSessionidCompany()}'"))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter())
                     {
@@ -116,7 +122,7 @@ namespace Olimpia_Front_End
                 using (SqlCommand cmd = new SqlCommand("DELETE FROM Class WHERE idClass = @idDelete", conn3))
                 {
                     // Esse valor poderia vir de qualquer outro lugar, como uma TextBox...
-                    cmd.Parameters.AddWithValue("@idDelete", numDelClass.Text);
+                    cmd.Parameters.AddWithValue("@idDelete", ddlSalaDel.Text);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -135,15 +141,17 @@ namespace Olimpia_Front_End
             {
                 conn6.Open();
 
-                using (SqlCommand cmdNewClass = new SqlCommand("INSERT INTO Class(Class, IdUsers)" +
-                    "OUTPUT INSERTED.idClass VALUES(@ClassName, @IdUser)", conn6))
+                using (SqlCommand cmdNewClass = new SqlCommand("INSERT INTO Class(Class, IdUsers, idCompany)" +
+                    "OUTPUT INSERTED.idClass VALUES(@ClassName, @IdUser, @idCompany)", conn6))
                 {
                     cmdNewClass.Parameters.AddWithValue("@ClassName", txtClassName.Text);
-                    cmdNewClass.Parameters.AddWithValue("@IdUser", txtIdUser.Text);
-
+                    cmdNewClass.Parameters.AddWithValue("@IdUser", ddlUserSala.Text);
+                    int idCompany = getSessionidCompany();
+                    cmdNewClass.Parameters.AddWithValue("@idCompany", idCompany);
 
                     // Agora a variável id conterá o valor do campo Id do registro criado
                     int idClass = (int)cmdNewClass.ExecuteScalar();
+
                 }
 
                 Response.Redirect("Salas.aspx");
@@ -164,12 +172,12 @@ namespace Olimpia_Front_End
                 using (SqlCommand cmdClassEdit = new SqlCommand("UPDATE Class SET Class=@EditClassName, IdUsers=@EditUserid WHERE idClass=@idClassEdit", conn12))
                 {
                     cmdClassEdit.Parameters.AddWithValue("@EditClassName", txtClassNameEdit.Text);
-                    cmdClassEdit.Parameters.AddWithValue("@EditUserId", txtRespEdit.Text);
+                    cmdClassEdit.Parameters.AddWithValue("@EditUserId", ddlUserSalaEdit.Text);
 
-                    cmdClassEdit.Parameters.AddWithValue("@idClassEdit", numClassEdit.Text);
+                    cmdClassEdit.Parameters.AddWithValue("@idClassEdit", ddlSalaEdit.Text);
 
                     cmdClassEdit.ExecuteNonQuery();
-                
+
                 }
             }
 
@@ -177,6 +185,169 @@ namespace Olimpia_Front_End
             Response.Redirect("Salas.aspx");
         }
         #endregion
+
+        #region Método para obter o Código da Empresa
+        public int getSessionidCompany()
+        {
+            int idCompany = 0;
+            string usuario = (string)Session["UserName"];
+            string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
+
+            using (SqlConnection conn3 = new SqlConnection(strConn))
+            {
+                conn3.Open();
+
+                using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT Company.idCompany,  Users.idCompany FROM Company, Users WHERE UserAdmin='{usuario}' or UserName ='{usuario}'", conn3))
+                {
+                    using (SqlDataReader reader = cmdAddMachine.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            idCompany = reader.GetInt32(0);
+                        }
+
+                    }
+                }
+            }
+
+            return idCompany;
+        }
+        #endregion
+
+        #region Alimentando a ddlUserSala
+        public void feedDdlUserSala()
+        {
+            if (ddlUserSala.Text == "")
+            {
+                string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
+
+                using (SqlConnection conn2 = new SqlConnection(strConn))
+                {
+
+                    conn2.Open();
+
+                    // Cria um comando para excluir o registro cujo Id é o selecionado
+                    using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT idUsers, UserName FROM Users WHERE idCompany = {getSessionidCompany()}", conn2))
+                    {
+
+                        using (SqlDataReader reader = cmdAddMachine.ExecuteReader())
+                        {
+                            while (reader.Read() == true)
+                            {
+                                int idUsers = reader.GetInt32(0);
+                                string Username = reader.GetString(1);
+                                ddlUserSala.Items.Add(new ListItem(Username, idUsers + ""));
+                            }
+                        }
+
+                    }
+
+                    conn2.Close();
+                }
+            }
+        }
+        #endregion
+
+        #region Alimentando a ddlUserSala
+        public void feedDdlUserSalaEdit()
+        {
+            if (ddlUserSalaEdit.Text == "")
+            {
+                string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
+
+                using (SqlConnection conn2 = new SqlConnection(strConn))
+                {
+
+                    conn2.Open();
+
+                    // Cria um comando para excluir o registro cujo Id é o selecionado
+                    using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT idUsers, UserName FROM Users WHERE idCompany = {getSessionidCompany()}", conn2))
+                    {
+
+                        using (SqlDataReader reader = cmdAddMachine.ExecuteReader())
+                        {
+                            while (reader.Read() == true)
+                            {
+                                int idUsers = reader.GetInt32(0);
+                                string Username = reader.GetString(1);
+                                ddlUserSalaEdit.Items.Add(new ListItem(Username, idUsers + ""));
+                            }
+                        }
+
+                    }
+
+                    conn2.Close();
+                }
+            }
+        }
+        #endregion
+
+        #region Alimentando a ddlSalaEdit
+        public void feedDdlSalaEdit()
+        {
+            if (ddlSalaEdit.Text == "")
+            {
+                string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
+
+                using (SqlConnection conn2 = new SqlConnection(strConn))
+                {
+
+                    conn2.Open();
+
+                    using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT idClass, Class FROM Class WHERE idCompany = {getSessionidCompany()}", conn2))
+                    {
+
+                        using (SqlDataReader reader = cmdAddMachine.ExecuteReader())
+                        {
+                            while (reader.Read() == true)
+                            {
+                                int idClass = reader.GetInt32(0);
+                                string Class = reader.GetString(1);
+                                ddlSalaEdit.Items.Add(new ListItem(Class, idClass + ""));
+                            }
+                        }
+
+                    }
+
+                    conn2.Close();
+                }
+            }
+        }
+        #endregion
+
+        #region Alimentando a ddlSalaDel
+        public void feedDdlSalaDel()
+        {
+            if (ddlSalaDel.Text == "")
+            {
+                string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
+
+                using (SqlConnection conn2 = new SqlConnection(strConn))
+                {
+
+                    conn2.Open();
+
+                    using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT idClass, Class FROM Class WHERE idCompany = {getSessionidCompany()}", conn2))
+                    {
+
+                        using (SqlDataReader reader = cmdAddMachine.ExecuteReader())
+                        {
+                            while (reader.Read() == true)
+                            {
+                                int idClass = reader.GetInt32(0);
+                                string Class = reader.GetString(1);
+                                ddlSalaDel.Items.Add(new ListItem(Class, idClass + ""));
+                            }
+                        }
+
+                    }
+
+                    conn2.Close();
+                }
+            }
+        }
+        #endregion
+
 
         #region Realizando Logout
         protected void btnLogoutUsers_Click(object sender, EventArgs e)

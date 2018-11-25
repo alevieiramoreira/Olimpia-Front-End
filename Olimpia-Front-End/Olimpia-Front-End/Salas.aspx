@@ -5,7 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Olimpia - Suas Salas</title>
+    <title>Athena | Suas Salas</title>
+    <link rel="shortcut icon" href="img/athenablack.png" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,7 +23,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -30,33 +31,36 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="home.aspx">Olímpia</a>
+                <a href="home.aspx">
+                    <img class="navbar-brand" src="img/athenalogogold3.png" /></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li class="nav-link"><a href="index.html">Home</a></li>
                     <li class="nav-link"><a href="faq.aspx">F.A.Q</a></li>
                     <li class="nav-link"><a href="contate.aspx">Contate-nos</a></li>
-                    
 
 
 
-                        </ul>
-        <form runat="server">
+
+                </ul>
+                <form runat="server">
                     <div class="btn-group navbar-right">
 
-                        <button type="button" class="dropdown btn-new btn dropdown-toggle" data-toggle="dropdown"> <% string usuario = (string)Session["UserName"];
-               Response.Write("Bem Vindo: " + usuario); %><span class="caret"></span></button>
+                        <button type="button" class="dropdown btn-new btn dropdown-toggle" data-toggle="dropdown">
+                            <% string usuario = (string)Session["UserName"];
+                                Response.Write($"Bem-vindo(a): {usuario} "); %><span class="caret"></span></button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                             <li><a href="Salas.aspx">Suas Salas</a></li>
                             <li><a href="Maquinas.aspx">Suas Máquinas</a></li>
                             <li><a href="Usuarios.aspx">Seus Usuários</a></li>
-                            <li><asp:Button runat="server" cssClass="dropdown-item" Text="Logout" ID="btnLogoutUsers" onclick="btnLogoutUsers_Click" BackColor="Transparent"/></li>
-                       </ul>
-                  </div>
+                            <li>
+                                <asp:Button runat="server" CssClass="dropdown-item" Text="Logout" ID="btnLogoutUsers" OnClick="btnLogoutUsers_Click" BackColor="Transparent" /></li>
+                        </ul>
+                    </div>
             </div>
         </div>
-    </div>
+        </div>
  </div>
         
     </nav>
@@ -64,35 +68,41 @@
 
     <div class="container">
         <h1>Gerenciamento de Salas</h1>
-        <button type="button" class="btn-new-user" id="btnNew" onclick="newUser()" style="background-color: black; color: white; border: solid 1px; border-radius: 1rem; padding: 0.6rem; ">Cadastrar Nova Sala...</button>
-        <button type="button" class="btn-switch" onclick="userEdit()" style="background-color: black; color: white; border: solid 1px; border-radius: 1rem; padding: 0.6rem; ">Editar</button>
-        <button type="button" class="btn-switch" onclick="userDelete()" style="background-color: black; color: white; border: solid 1px; border-radius: 1rem; padding: 0.6rem; ">Excluir</button>
-   
+        <br />
+        <button type="button" class="btn-new-user" id="btnNew" onclick="newUser()">Cadastrar Nova Sala</button>
+        <button type="button" class="btn-new-user" onclick="userEdit()">Editar</button>
+        <button type="button" class="btn-new-user" onclick="userDelete()">Excluir</button>
 
-            <div id="table_div"></div>
-            <div id="box1">
-                           <asp:PlaceHolder  ID = "PlaceHolder2" runat="server" /> 
-              
-            </div>
-          
+        <br />
+        <br />
 
-         
+        <div id="table_div"></div>
+        <div id="box1">
+            <asp:PlaceHolder ID="PlaceHolder2" runat="server" />
+
+        </div>
+
+
+
     </div>
-               
+
     <!--input de cadastrar salas-->
     <div id="box2" style="display: none;">
         <div class="form-group">
-            <label>Nome da Sala</label>
+            <label>Nome da Sala:</label>
             <asp:TextBox class="form-control" placeholder="Ex: Digital 1" ID="txtClassName" runat="server" />
         </div>
         <div class="form-group">
-            <label>ID do Responsável pela Sala</label>
-            <asp:TextBox class="form-control" placeholder="Número de exemplo" ID="txtIdUser" runat="server" />
+            <label>Responsável pela Sala:</label>
+            <br />
+            <asp:DropDownList ID="ddlUserSala" runat="server">
+                <asp:ListItem Text="" />
+            </asp:DropDownList>
         </div>
-      
 
-        <asp:Button Text="Cadastrar" type="submit" CssClass="btn btn-primary" runat="server" ID="btnInsertClass" OnClick="btnInsertClass_Click" />
-        <button type="button" class="btn btn-primary" id="btnCancel" onclick="cancelUser()">Cancelar</button>
+
+        <asp:Button Text="Cadastrar" type="submit" CssClass="btn-new-user" runat="server" ID="btnInsertClass" OnClick="btnInsertClass_Click" />
+        <button type="button" class="btn-new-user" id="btnCancel" onclick="cancelUser()">Cancelar</button>
 
     </div>
 
@@ -100,42 +110,43 @@
 
     <div id="box3" style="display: none;">
         <div class="form-group">
-            <label>Digite a ID da sala que deseja editar</label>
-            <asp:TextBox class="form-control" placeholder="Nome" runat="server" ID="numClassEdit" />
+            <label>Escolha a sala que deseja editar:</label>
+            <br />
+            <asp:DropDownList class="form-control" ID="ddlSalaEdit" runat="server">
+                <asp:ListItem Text="" />
+            </asp:DropDownList>
         </div>
 
         <div class="form-group">
-            <label>Nome da Sala</label>
+            <label>Novo nome para a Sala:</label>
             <asp:TextBox class="form-control" placeholder="Nome" ID="txtClassNameEdit" runat="server" />
         </div>
 
-           <div class="form-group">
-            <label>ID do Responsável</label>
-            <asp:TextBox class="form-control" placeholder="Apenas números" ID="txtRespEdit" runat="server" />
+        <div class="form-group">
+            <label>Responsável</label>
+            <br />
+            <asp:DropDownList ID="ddlUserSalaEdit" runat="server">
+                <asp:ListItem Text="" />
+            </asp:DropDownList>
         </div>
-       
-       
-
-        <asp:Button Text="Editar" runat="server" CssClass="btn btn-primary" ID="btnEditClass" OnClick="btnEditClass_Click" />
-        <button type="button" class="btn btn-primary" id="btnCancel1" onclick="cancelEdit()">Cancelar</button>
+        <asp:Button Text="Editar" runat="server" CssClass="btn-new-user" ID="btnEditClass" OnClick="btnEditClass_Click" />
+        <button type="button" class="btn-new-user" id="btnCancel1" onclick="cancelEdit()">Cancelar</button>
     </div>
-    
-    
 
-     <!--input de excluir usuário-->
+    <!--input de excluir usuário-->
 
     <div id="box4" style="display: none">
-
         <div class="form-group">
-            <label>Digite a ID da Sala que deseja Deletar</label>
-            <asp:TextBox class="form-control" ID="numDelClass" placeholder="Apenas números" runat="server" />
+            <label>Selecione a Sala que deseja EXCLUIR:</label>
+            <br />
+            <asp:DropDownList ID="ddlSalaDel" runat="server">
+                <asp:ListItem Text="" />
+            </asp:DropDownList>
         </div>
-        
-
-             <asp:Button Text="Deletar" runat="server" CssClass="btn btn-primary" ID="btnDeleteClass" OnClick="btnDeleteClass_Click" />
-                    <button type="button" class="btn btn-primary" id="btnCancel1" onclick="cancelDelete()">Cancelar</button>
+        <asp:Button Text="Excluir" runat="server" CssClass="btn-new-user" ID="btnDeleteClass" OnClick="btnDeleteClass_Click" />
+        <button type="button" class="btn-new-user" id="btnCancel1" onclick="cancelDelete()">Cancelar</button>
     </div>
-    
+
 
     </form>      
 </body>

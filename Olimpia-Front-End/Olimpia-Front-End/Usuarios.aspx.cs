@@ -18,9 +18,12 @@ namespace Olimpia_Front_End
         protected string UserEmail;
         public string lblMessage;
 
-        #region Gerando DataTable
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            feedDdlUserEdit();
+            feedDdlUserDel();
+            
 
             #region Recuperando Sessão
             // Recupera usuario da sessão
@@ -33,6 +36,8 @@ namespace Olimpia_Front_End
             }
 
             #endregion
+
+            #region Gerando DataTable
 
             if (!this.IsPostBack)
             {
@@ -88,7 +93,7 @@ namespace Olimpia_Front_End
             string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
             using (SqlConnection con = new SqlConnection(strConn))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT IdUsers, UserName, Email FROM Users"))
+                using (SqlCommand cmd = new SqlCommand($"SELECT UserName 'Nome', Email'E-mail' FROM Users where idCompany='{getSessionidCompany()}'"))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter())
                     {
@@ -107,31 +112,6 @@ namespace Olimpia_Front_End
 
         #endregion
 
-        #region Deletando Usuário
-        protected void btnDeleteUser_Click(object sender, EventArgs e)
-        {
-            string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
-
-            using (SqlConnection conn3 = new SqlConnection(strConn))
-            {
-
-                conn3.Open();
-
-                // Cria um comando para excluir o registro cujo Id é o selecionado
-                using (SqlCommand cmd = new SqlCommand("DELETE FROM Users WHERE IdUsers = @idDelete", conn3))
-                {
-                    // Esse valor poderia vir de qualquer outro lugar, como uma TextBox...
-                    cmd.Parameters.AddWithValue("@idDelete", numDelUser.Text);
-
-                    cmd.ExecuteNonQuery();
-                }
-
-                Response.Redirect("Usuarios.aspx");
-
-            }
-        }
-        #endregion
-
         #region Cadastrando Usuário
         protected void btnCadastrarUser_Click(object sender, EventArgs e)
         {
@@ -141,13 +121,15 @@ namespace Olimpia_Front_End
             {
                 conn1.Open();
 
-                using (SqlCommand cmdNewUser = new SqlCommand("INSERT INTO Users(UserName, CPF, Email, Password)" +
-                    "OUTPUT INSERTED.IdUsers VALUES(@UserName, @CPFUser, @EmailUser, @PwdUser)", conn1))
+                using (SqlCommand cmdNewUser = new SqlCommand("INSERT INTO Users(UserName, CPF, Email, Password, idCompany)" +
+                    "OUTPUT INSERTED.IdUsers VALUES(@UserName, @CPFUser, @EmailUser, @PwdUser, @idCompany)", conn1))
                 {
                     cmdNewUser.Parameters.AddWithValue("@UserName", txtUserName.Text);
                     cmdNewUser.Parameters.AddWithValue("@CPFUser", numUserCPF.Text);
                     cmdNewUser.Parameters.AddWithValue("@EmailUser", txtUserEmail.Text);
                     cmdNewUser.Parameters.AddWithValue("@PwdUser", txtUserPwd.Text);
+                    int idCompany = getSessionidCompany();
+                    cmdNewUser.Parameters.AddWithValue("@idCompany", idCompany);
 
                     // Agora a variável id conterá o valor do campo Id do registro criado
                     int idUsers = (int)cmdNewUser.ExecuteScalar();
@@ -167,13 +149,14 @@ namespace Olimpia_Front_End
             using (SqlConnection conn2 = new SqlConnection(strConn))
             {
                 conn2.Open();
-                using (SqlCommand cmdUserEdit = new SqlCommand("UPDATE Users SET UserName=@UserName, Email=@EmailUser WHERE IdUsers=@idUserEdit", conn2))
+                using (SqlCommand cmdUserEdit = new SqlCommand("UPDATE Users SET UserName=@UserName, Email=@EmailUser, Password=@PassUser WHERE IdUsers=@idUserEdit", conn2))
                 {
 
                     cmdUserEdit.Parameters.AddWithValue("@UserName", txtUserNameEdit.Text);
                     cmdUserEdit.Parameters.AddWithValue("@EmailUser", txtUserEmailEdit.Text);
+                    cmdUserEdit.Parameters.AddWithValue("@idUserEdit", ddlUserEdit.Text);
+                    cmdUserEdit.Parameters.AddWithValue("@PassUser", txtPasswordEdit.Text);
 
-                    cmdUserEdit.Parameters.AddWithValue("@idUserEdit", numUserEdit.Text);
 
                     cmdUserEdit.ExecuteNonQuery();
                 }
@@ -184,13 +167,36 @@ namespace Olimpia_Front_End
         }
         #endregion
 
+        #region Deletando Usuário
+        protected void btnDeleteUser_Click(object sender, EventArgs e)
+        {
+            string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
+
+            using (SqlConnection conn3 = new SqlConnection(strConn))
+            {
+
+                conn3.Open();
+
+                using (SqlCommand cmd = new SqlCommand("DELETE idUsers FROM Users WHERE IdUsers = @idDelete", conn3))
+                {
+                    cmd.Parameters.AddWithValue("@idDelete", ddlUserDel.Text);
+                    cmd.ExecuteNonQuery();
+                }
+
+                Response.Redirect("Usuarios.aspx");
+
+            }
+        }
+        #endregion
+
         #region Visualização de Salas
 
- 
 
-        protected void btnUserView_Click(object sender, EventArgs e) {
 
-           Response.Redirect("Usuarios.aspx"+numUserView);
+        protected void btnUserView_Click(object sender, EventArgs e)
+        {
+
+            Response.Redirect("Usuarios.aspx" + numUserView);
 
 
 
@@ -198,6 +204,104 @@ namespace Olimpia_Front_End
 
 
         #endregion
+
+        #region Método para obter o Código da Empresa
+        public int getSessionidCompany()
+        {
+            int idCompany = 0;
+            string usuario = (string)Session["UserName"];
+            string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
+
+            using (SqlConnection conn3 = new SqlConnection(strConn))
+            {
+                conn3.Open();
+
+                using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT Company.idCompany,  Users.idCompany FROM Company, Users WHERE UserAdmin='{usuario}' or UserName ='{usuario}'", conn3))
+                {
+                    using (SqlDataReader reader = cmdAddMachine.ExecuteReader())
+                    {
+                        while (reader.Read() == true)
+                        {
+                            idCompany = reader.GetInt32(0);
+                        }
+
+                    }
+                }
+            }
+
+            return idCompany;
+        }
+        #endregion
+
+        #region Alimentando a ddlUserEdit
+        public void feedDdlUserEdit()
+        {
+            if (ddlUserEdit.Text == "")
+            {
+                string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
+
+                using (SqlConnection conn2 = new SqlConnection(strConn))
+                {
+
+                    conn2.Open();
+
+                    // Cria um comando para excluir o registro cujo Id é o selecionado
+                    using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT idUsers, UserName FROM Users WHERE idCompany = {getSessionidCompany()}", conn2))
+                    {
+
+                        using (SqlDataReader reader = cmdAddMachine.ExecuteReader())
+                        {
+                            while (reader.Read() == true)
+                            {
+                                int idUsers = reader.GetInt32(0);
+                                string Username = reader.GetString(1);
+                                ddlUserEdit.Items.Add(new ListItem(Username, idUsers + ""));
+                            }
+                        }
+
+                    }
+
+                    conn2.Close();
+                }
+            }
+        }
+        #endregion
+
+        #region Alimentando a ddlUserDel
+        public void feedDdlUserDel()
+        {
+            if (ddlUserEdit.Text == "")
+            {
+                string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
+
+                using (SqlConnection conn2 = new SqlConnection(strConn))
+                {
+
+                    conn2.Open();
+
+                    // Cria um comando para excluir o registro cujo Id é o selecionado
+                    using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT idUsers, UserName FROM Users WHERE idCompany = {getSessionidCompany()}", conn2))
+                    {
+
+                        using (SqlDataReader reader = cmdAddMachine.ExecuteReader())
+                        {
+                            while (reader.Read() == true)
+                            {
+                                int idUsers = reader.GetInt32(0);
+                                string Username = reader.GetString(1);
+                                ddlUserDel.Items.Add(new ListItem(Username, idUsers + ""));
+                            }
+                        }
+
+                    }
+
+                    conn2.Close();
+                }
+            }
+        }
+        #endregion
+
+
 
         #region Realizando Logout
         protected void btnLogoutUsers_Click(object sender, EventArgs e)

@@ -31,13 +31,13 @@ namespace Olimpia_Front_End {
         protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder3;
         
         /// <summary>
-        /// Controle numClassMachine.
+        /// Controle ddlFiltroMaquina.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numClassMachine;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFiltroMaquina;
         
         /// <summary>
         /// Controle btnViewMachine.
@@ -49,22 +49,22 @@ namespace Olimpia_Front_End {
         protected global::System.Web.UI.WebControls.Button btnViewMachine;
         
         /// <summary>
-        /// Controle numMachineEdit.
+        /// Controle ddlEditMachine.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numMachineEdit;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEditMachine;
         
         /// <summary>
-        /// Controle txtNewClassEdit.
+        /// Controle ddlSalaEdit.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewClassEdit;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSalaEdit;
         
         /// <summary>
         /// Controle btnEditMachine.
@@ -76,13 +76,13 @@ namespace Olimpia_Front_End {
         protected global::System.Web.UI.WebControls.Button btnEditMachine;
         
         /// <summary>
-        /// Controle numDelMachine.
+        /// Controle ddlDelMachine.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numDelMachine;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDelMachine;
         
         /// <summary>
         /// Controle btnDeleteMachine.
@@ -92,5 +92,41 @@ namespace Olimpia_Front_End {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDeleteMachine;
+        
+        /// <summary>
+        /// Controle txtidMachine.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtidMachine;
+        
+        /// <summary>
+        /// Controle ddlSala.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSala;
+        
+        /// <summary>
+        /// Controle lblMensagem.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensagem;
+        
+        /// <summary>
+        /// Controle btnAddMachine.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddMachine;
     }
 }

@@ -40,13 +40,13 @@ namespace Olimpia_Front_End {
         protected global::System.Web.UI.WebControls.TextBox txtClassName;
         
         /// <summary>
-        /// Controle txtIdUser.
+        /// Controle ddlUserSala.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdUser;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUserSala;
         
         /// <summary>
         /// Controle btnInsertClass.
@@ -58,13 +58,13 @@ namespace Olimpia_Front_End {
         protected global::System.Web.UI.WebControls.Button btnInsertClass;
         
         /// <summary>
-        /// Controle numClassEdit.
+        /// Controle ddlSalaEdit.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numClassEdit;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSalaEdit;
         
         /// <summary>
         /// Controle txtClassNameEdit.
@@ -76,13 +76,13 @@ namespace Olimpia_Front_End {
         protected global::System.Web.UI.WebControls.TextBox txtClassNameEdit;
         
         /// <summary>
-        /// Controle txtRespEdit.
+        /// Controle ddlUserSalaEdit.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRespEdit;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUserSalaEdit;
         
         /// <summary>
         /// Controle btnEditClass.
@@ -94,13 +94,13 @@ namespace Olimpia_Front_End {
         protected global::System.Web.UI.WebControls.Button btnEditClass;
         
         /// <summary>
-        /// Controle numDelClass.
+        /// Controle ddlSalaDel.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numDelClass;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSalaDel;
         
         /// <summary>
         /// Controle btnDeleteClass.

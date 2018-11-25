@@ -76,13 +76,13 @@ namespace Olimpia_Front_End {
         protected global::System.Web.UI.WebControls.Button btnCadastrarUser;
         
         /// <summary>
-        /// Controle numUserEdit.
+        /// Controle ddlUserEdit.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numUserEdit;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUserEdit;
         
         /// <summary>
         /// Controle txtUserNameEdit.
@@ -103,6 +103,15 @@ namespace Olimpia_Front_End {
         protected global::System.Web.UI.WebControls.TextBox txtUserEmailEdit;
         
         /// <summary>
+        /// Controle txtPasswordEdit.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPasswordEdit;
+        
+        /// <summary>
         /// Controle btnEditarUser.
         /// </summary>
         /// <remarks>
@@ -112,13 +121,13 @@ namespace Olimpia_Front_End {
         protected global::System.Web.UI.WebControls.Button btnEditarUser;
         
         /// <summary>
-        /// Controle numDelUser.
+        /// Controle ddlUserDel.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox numDelUser;
+        protected global::System.Web.UI.WebControls.DropDownList ddlUserDel;
         
         /// <summary>
         /// Controle btnDeleteuser.

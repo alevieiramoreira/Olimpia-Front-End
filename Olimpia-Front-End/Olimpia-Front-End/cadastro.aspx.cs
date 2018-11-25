@@ -78,6 +78,7 @@ namespace Olimpia_Front_End
 
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Usuario Cadastrado com Sucesso!!')", true);
 
+                            Response.Redirect("login.aspx");
                         }
                         #endregion
 

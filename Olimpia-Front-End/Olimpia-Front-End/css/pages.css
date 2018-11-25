@@ -18,25 +18,25 @@
 #box1{
     background-color: #fff;
     border: solid .5px;
-    border-color: #cfcecf;
+    border-color: black;
     margin: auto;
     border-radius: 1rem;
 }
 #box2{  
- 
     padding: 2rem;
     border-radius: 1rem;
-    
 }
 #box3{
-   
-
     padding: 2rem;
     border-radius: 1rem;
-
 }
 
 #box4 {
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+#box5 {
     padding: 2rem;
     border-radius: 1rem;
 }
@@ -68,9 +68,11 @@
 }
 
 .btn-new-user {
-    color: black;
+    color: #cb8933;
     background-color: white;
-    border: solid 1px;
+    border-color: #cfcecf;
+    border-radius: 1rem;
+    padding: 0.6rem;
 }
 
 .box-right {
@@ -86,4 +88,7 @@ button.btn-nav {
 
 .btn-logout {
     background: none;
+    color: black;
+    background-color: whitesmoke;
+    margin: auto;
 }

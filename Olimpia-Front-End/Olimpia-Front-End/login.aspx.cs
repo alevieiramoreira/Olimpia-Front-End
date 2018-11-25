@@ -34,47 +34,60 @@ namespace Olimpia_Front_End
 
             string conector = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
             SqlConnection conn1 = new SqlConnection(conector);
-            string userAd, passAd, user, pass;
 
+            string loginAdmin = "SELECT UserAdmin, PassAdmin FROM Company WHERE UserAdmin='" + txtUserLogin.Text + "' AND PassAdmin='" + txtPassLogin.Text + "'";
 
-            string loginAdmin = "SELECT UserAdmin, PassAdmin, UserName, Password FROM VWLOGIN2 WHERE (UserAdmin='" + txtUserLogin.Text + "' AND PassAdmin='" + txtPassLogin.Text + "')" +
-                " OR (UserName = '" + txtUserLogin.Text + "' and Password = '" + txtPassLogin.Text + "') ";
-
-
-            SqlCommand command = new SqlCommand(loginAdmin, conn1);
-            command.CommandType = System.Data.CommandType.Text;
-            SqlDataReader reader;
+            SqlCommand cmdLoginAdmin = new SqlCommand(loginAdmin, conn1);
+            cmdLoginAdmin.CommandType = System.Data.CommandType.Text;
+            SqlDataReader readerAdmin;
             try
             {
                 conn1.Open();
-                reader = command.ExecuteReader();
+                readerAdmin = cmdLoginAdmin.ExecuteReader();
 
-                if (reader.Read())
+                if (readerAdmin.Read())
                 {
-                    userAd = reader[0].ToString();
-                    passAd = reader[1].ToString();
-                    user = reader[2].ToString();
-                    pass = reader[3].ToString();
+                    this.lblMensagem.Text = "Admin logado com sucesso!.";
+                    Session["UserName"] = usuario;
+                    Response.Redirect("Usuarios.aspx");
+
                     conn1.Close();
-
-                    if (userAd == txtUserLogin.Text && passAd == txtPassLogin.Text)
-                    {
-                        this.lblMensagem.Text = "Admin logado com sucesso!.";
-                        Session["UserName"] = usuario;
-                        Response.Redirect("Usuarios.aspx");
-                    }
-
-                    else if (user == txtUserLogin.Text && pass == txtPassLogin.Text)
-                    {
-                        this.lblMensagem.Text = "Logado com sucesso!.";
-                        Session["UserName"] = usuario;
-                        Response.Redirect("Salas.aspx");
-                    }
-
                 }
-                else
+
+                else if (readerAdmin.Read() == false)
                 {
-                    this.lblMensagem.Text = "Usuário e/ou senha incorretos.";
+                    conn1.Close();
+                    string connector = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
+                    SqlConnection conn2 = new SqlConnection(connector);
+
+                    string login = "SELECT UserName, Password FROM Users WHERE UserName='" + txtUserLogin.Text + "' AND Password='" + txtPassLogin.Text + "'";
+                    SqlCommand cmdLogin = new SqlCommand(login, conn2);
+                    cmdLogin.CommandType = System.Data.CommandType.Text;
+                    SqlDataReader readerLogin;
+
+                    try
+                    {
+                        conn2.Open();
+                        readerLogin = cmdLogin.ExecuteReader();
+
+                        if (readerLogin.Read())
+                        {
+                            this.lblMensagem.Text = "Logado com sucesso!.";
+                            Session["UserName"] = usuario;
+                            Response.Redirect("Salas.aspx");
+
+                            conn2.Close();
+                        }
+                        else
+                        {
+                            this.lblMensagem.Text = "Usuário e/ou senha incorretos.";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        this.lblMensagem.Text = "Deu erro! " + ex;
+                    }
+
                 }
 
             }
@@ -82,11 +95,12 @@ namespace Olimpia_Front_End
             {
                 this.lblMensagem.Text = "Deu erro! " + ex;
             }
-
-
-
         }
+
+
     }
+
+
 }
 
 

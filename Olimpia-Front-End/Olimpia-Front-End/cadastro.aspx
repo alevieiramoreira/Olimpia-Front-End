@@ -12,7 +12,7 @@
 
 	<link rel="shortcut icon" href="img/logoblack.png">
 
-	<title>Olimpia</title>
+	<title>Olimpia | Cadastro</title>
 
 	<!-- Bootstrap CSS -->
 	<link href="responsive/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -62,7 +62,7 @@
 								<div id="coluna-2">
 									<asp:TextBox ID="txtRazao" cssClass="form-cadastro" runat="server" placeholder="Razão Social" />
 									<br>
-									<asp:TextBox ID="txtEmail" cssClass="form-cadastro" runat="server" placeholder="E-mail" />
+									<asp:TextBox ID="txtEmail" cssClass="form-cadastro" runat="server" placeholder="E-mail" type="email" />
 									<br>
 									<asp:TextBox ID="txtSenhaCadastro" cssClass="form-cadastro" runat="server" placeholder="Senha" type="password" />
 									<br>
