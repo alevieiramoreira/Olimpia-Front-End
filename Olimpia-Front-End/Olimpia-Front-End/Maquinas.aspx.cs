@@ -12,7 +12,7 @@ namespace Olimpia_Front_End
     {
 
         protected void Page_Load(object sender, EventArgs e)
-        {   
+        {
             //Alimentando as DropDownLists da página
             feedDdlSala();
             feedDdlSalaEdit();
@@ -148,18 +148,50 @@ namespace Olimpia_Front_End
         #region Filtro Máquinas
         protected void btnViewMachine_Click(object sender, EventArgs e)
         {
-            //string selecionado = ddlFiltroMaquina.Text;
-            //if (selecionado = 1)
-            //{
+            string selecionado = ddlFiltroMaquina.SelectedValue.ToString();
+            if (selecionado == "1")
+            {
+                DataTable GetDataSala()
+                {
+                    string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
+                    using (SqlConnection con = new SqlConnection(strConn))
+                    {
+                        using (SqlCommand cmd = new SqlCommand($"SELECT Machines.idMachines 'Código da Máquina', Machines.CpuName 'Info. Processador', Machines.HdTotal 'HD Total', Machines.RamTotal 'Memória RAM Total' , Machines.IP, Class.Class 'Sala' FROM Machines, Class WHERE Machines.idClass=Class.idClass and Machines.idCompany='{getSessionidCompany()}'"))
+                        {
+                            using (SqlDataAdapter sda = new SqlDataAdapter())
+                            {
+                                cmd.Connection = con;
+                                sda.SelectCommand = cmd;
+                                using (DataTable dt = new DataTable())
+                                {
+                                    sda.Fill(dt);
+                                    return dt;
+                                }
+                            }
+                        }
+                    }
+
+                }
 
 
 
-            //}
-            //else if (selecionado = '1')
-            //{
 
 
-            //}
+
+                //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('1')", true);
+            }
+            else if (selecionado == "2")
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('2')", true);
+            }
+            else if (selecionado == "3")
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('3')", true);
+            }
+            
+
+
+
 
             //aqui seria aquele botão de visualizar, eu comecei mas não sei mto como fazer...
 

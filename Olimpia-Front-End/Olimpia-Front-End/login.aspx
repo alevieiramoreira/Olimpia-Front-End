@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Olimpia_Front_End.login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Olimpia_Front_End.login" %>
 
 <!DOCTYPE html>
 <!--Nota: Foi utilizado de um template em bootstrap já existente.

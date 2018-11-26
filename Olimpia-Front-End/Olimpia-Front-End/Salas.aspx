@@ -69,9 +69,9 @@
     <div class="container">
         <h1>Gerenciamento de Salas</h1>
         <br />
-        <button type="button" class="btn-new-user" id="btnNew" onclick="newUser()">Cadastrar Nova Sala</button>
-        <button type="button" class="btn-new-user" onclick="userEdit()">Editar</button>
-        <button type="button" class="btn-new-user" onclick="userDelete()">Excluir</button>
+        <button type="button" class="btn-pages" id="btnNew" onclick="newUser()">Cadastrar Nova Sala</button>
+        <button type="button" class="btn-pages" onclick="userEdit()">Editar</button>
+        <button type="button" class="btn-pages" onclick="userDelete()">Excluir</button>
 
         <br />
         <br />
@@ -101,8 +101,8 @@
         </div>
 
 
-        <asp:Button Text="Cadastrar" type="submit" CssClass="btn-new-user" runat="server" ID="btnInsertClass" OnClick="btnInsertClass_Click" />
-        <button type="button" class="btn-new-user" id="btnCancel" onclick="cancelUser()">Cancelar</button>
+        <asp:Button Text="Cadastrar" type="submit" CssClass="btn-pages" runat="server" ID="btnInsertClass" OnClick="btnInsertClass_Click" />
+        <button type="button" class="btn-pages" id="btnCancel" onclick="cancelUser()">Cancelar</button>
 
     </div>
 
@@ -129,8 +129,8 @@
                 <asp:ListItem Text="" />
             </asp:DropDownList>
         </div>
-        <asp:Button Text="Editar" runat="server" CssClass="btn-new-user" ID="btnEditClass" OnClick="btnEditClass_Click" />
-        <button type="button" class="btn-new-user" id="btnCancel1" onclick="cancelEdit()">Cancelar</button>
+        <asp:Button Text="Editar" runat="server" CssClass="btn-pages" ID="btnEditClass" OnClick="btnEditClass_Click" />
+        <button type="button" class="btn-pages" id="btnCancel1" onclick="cancelEdit()">Cancelar</button>
     </div>
 
     <!--input de excluir usuário-->
@@ -143,8 +143,8 @@
                 <asp:ListItem Text="" />
             </asp:DropDownList>
         </div>
-        <asp:Button Text="Excluir" runat="server" CssClass="btn-new-user" ID="btnDeleteClass" OnClick="btnDeleteClass_Click" />
-        <button type="button" class="btn-new-user" id="btnCancel1" onclick="cancelDelete()">Cancelar</button>
+        <asp:Button Text="Excluir" runat="server" CssClass="btn-pages" ID="btnDeleteClass" OnClick="btnDeleteClass_Click" />
+        <button type="button" class="btn-pages" id="btnCancel1" onclick="cancelDelete()">Cancelar</button>
     </div>
 
 

@@ -177,7 +177,7 @@ namespace Olimpia_Front_End
 
                 conn3.Open();
 
-                using (SqlCommand cmd = new SqlCommand("DELETE idUsers FROM Users WHERE IdUsers = @idDelete", conn3))
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM Users WHERE IdUsers = @idDelete", conn3))
                 {
                     cmd.Parameters.AddWithValue("@idDelete", ddlUserDel.Text);
                     cmd.ExecuteNonQuery();

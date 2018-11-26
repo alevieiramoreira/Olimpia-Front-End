@@ -69,7 +69,7 @@
     <None Include="packages.config" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\pages.css" />
-    <Content Include="home.aspx" />
+    <Content Include="Home.aspx" />
     <Content Include="img\athenablack.png" />
     <Content Include="img\athenagold.png" />
     <Content Include="img\athenalogogold.png" />
@@ -82,7 +82,6 @@
     <Content Include="js\sourceTable.js" />
     <Content Include="js\switch.js" />
     <Content Include="Maquinas.aspx" />
-    <Content Include="modelBox.js" />
     <Content Include="responsive\bootstrap\css\bootstrap.css.map" />
     <Content Include="responsive\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="responsive\bootstrap\js\bootstrap.bundle.js.map" />
@@ -99,7 +98,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="cadastro.aspx" />
+    <Content Include="Cadastro.aspx" />
     <Content Include="css\creative.css" />
     <Content Include="css\design.css" />
     <Content Include="Global.asax" />
@@ -114,7 +113,7 @@
     <Content Include="img\twitter.png" />
     <Content Include="js\creative.js" />
     <Content Include="js\creative.min.js" />
-    <Content Include="login.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="responsive\bootstrap\css\bootstrap-grid.css" />
     <Content Include="responsive\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="responsive\bootstrap\css\bootstrap-reboot.css" />
@@ -130,37 +129,35 @@
     <Content Include="responsive\jquery\jquery.slim.js" />
     <Content Include="responsive\jquery\jquery.slim.min.js" />
     <Content Include="Salas.aspx" />
-    <Content Include="tableUsers.js" />
-    <Content Include="teste.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cadastro.aspx.cs">
-      <DependentUpon>cadastro.aspx</DependentUpon>
+    <Compile Include="Cadastro.aspx.cs">
+      <DependentUpon>Cadastro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="cadastro.aspx.designer.cs">
-      <DependentUpon>cadastro.aspx</DependentUpon>
+    <Compile Include="Cadastro.aspx.designer.cs">
+      <DependentUpon>Cadastro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="home.aspx.cs">
-      <DependentUpon>home.aspx</DependentUpon>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="home.aspx.designer.cs">
-      <DependentUpon>home.aspx</DependentUpon>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="login.aspx.cs">
-      <DependentUpon>login.aspx</DependentUpon>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="login.aspx.designer.cs">
-      <DependentUpon>login.aspx</DependentUpon>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Maquinas.aspx.cs">
       <DependentUpon>Maquinas.aspx</DependentUpon>
@@ -176,13 +173,6 @@
     </Compile>
     <Compile Include="Salas.aspx.designer.cs">
       <DependentUpon>Salas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="teste.aspx.cs">
-      <DependentUpon>teste.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="teste.aspx.designer.cs">
-      <DependentUpon>teste.aspx</DependentUpon>
     </Compile>
     <Compile Include="Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>

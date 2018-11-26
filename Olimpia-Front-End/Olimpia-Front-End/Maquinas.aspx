@@ -61,10 +61,10 @@
     <div class="container">
         <h1>Gerenciamento de Máquinas</h1>
         <br />
-        <button type="button" class="btn-new-user" id="btnNewMach" onclick="userView()">Cadastrar Máquina</button>
-        <button type="button" class="btn-new-user" id="btnNew" onclick="newUser(), feed">Filtrar Máquinas</button>
-        <button type="button" class="btn-new-user" onclick="userEdit()" >Editar Máquina</button>
-        <button type="button" class="btn-new-user" onclick="userDelete()">Excluir</button>
+        <button type="button" class="btn-pages" id="btnNewMach" onclick="userView()">Cadastrar Máquina</button>
+        <button type="button" class="btn-pages" id="btnNew" onclick="newUser(), feed">Filtrar Máquinas</button>
+        <button type="button" class="btn-pages" onclick="userEdit()" >Editar Máquina</button>
+        <button type="button" class="btn-pages" onclick="userDelete()">Excluir</button>
         <br />
         <br />
         <div id="table_div"></div>
@@ -86,8 +86,8 @@
             </asp:DropDownList>
         </div>
 
-        <asp:Button Text="Visualizar" type="submit" CssClass="btn-new-user" runat="server" ID="btnViewMachine" OnClick="btnViewMachine_Click" />
-        <button type="button" class="btn-new-user" id="btnCancel2" onclick="cancelUser()">Cancelar</button>
+        <asp:Button Text="Visualizar" type="submit" CssClass="btn-pages" runat="server" ID="btnViewMachine" OnClick="btnViewMachine_Click" />
+        <button type="button" class="btn-pages" id="btnCancel2" onclick="cancelUser()">Cancelar</button>
     </div>
 
     <!--input de editar Sala da máquina-->
@@ -111,8 +111,8 @@
             </asp:DropDownList>
         </div>
 
-        <asp:Button Text="Editar" runat="server" CssClass="btn-new-user" ID="btnEditMachine" OnClick="btnEditMachine_Click" />
-        <button type="button" class="btn-new-user" id="btnCancel3" onclick="cancelEdit()">Cancelar</button>
+        <asp:Button Text="Editar" runat="server" CssClass="btn-pages" ID="btnEditMachine" OnClick="btnEditMachine_Click" />
+        <button type="button" class="btn-pages" id="btnCancel3" onclick="cancelEdit()">Cancelar</button>
     </div>
 
 
@@ -132,8 +132,8 @@
         </div>
 
 
-        <asp:Button Text="Excluir" runat="server" CssClass="btn-new-user" ID="btnDeleteMachine" OnClick="btnDeleteMachine_Click" />
-        <button type="button" class="btn-new-user" id="btnCancel4" onclick="cancelDelete()">Cancelar</button>
+        <asp:Button Text="Excluir" runat="server" CssClass="btn-pages" ID="btnDeleteMachine" OnClick="btnDeleteMachine_Click" />
+        <button type="button" class="btn-pages" id="btnCancel4" onclick="cancelDelete()">Cancelar</button>
     </div>
 
     <!--input de cadastrar nova máquina-->
@@ -155,8 +155,8 @@
             <asp:Label ID="lblMensagem" runat="server" Text=""></asp:Label>
         </div>
 
-        <asp:Button Text="Cadastrar" runat="server" CssClass="btn-new-user" ID="btnAddMachine" OnClick="btnAddMachine_Click" />
-        <button type="button" class="btn-new-user" id="btnCancel5" onclick="cancelAddMachine()">Cancelar</button>
+        <asp:Button Text="Cadastrar" runat="server" CssClass="btn-pages" ID="btnAddMachine" OnClick="btnAddMachine_Click" />
+        <button type="button" class="btn-pages" id="btnCancel5" onclick="cancelAddMachine()">Cancelar</button>
     </div>
 
     </form>      
