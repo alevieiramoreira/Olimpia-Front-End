@@ -80,11 +80,15 @@
     <Content Include="css\design.css" />
     <Content Include="css\pages.css" />
     <Content Include="dash.aspx" />
+    <Content Include="gaugeChart.js" />
     <Content Include="Global.asax" />
     <Content Include="GraficoCpu.aspx" />
     <Content Include="GraficoRam.aspx" />
+    <Content Include="HideShowSections.js" />
     <Content Include="linechart.js" />
+    <Content Include="new.css" />
     <Content Include="piechart.js" />
+    <Content Include="TesteCpu.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +118,13 @@
     </Compile>
     <Compile Include="Models\LeituraCpu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TesteCpu.aspx.cs">
+      <DependentUpon>TesteCpu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TesteCpu.aspx.designer.cs">
+      <DependentUpon>TesteCpu.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
