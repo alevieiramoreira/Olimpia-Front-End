@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="Olimpia_Front_End.Usuarios" %>
+﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="Olimpia_Front_End.Usuarios" %>
 
 <!DOCTYPE html>
 

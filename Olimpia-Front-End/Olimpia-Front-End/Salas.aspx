@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Salas.aspx.cs" Inherits="Olimpia_Front_End.Salas" %>
+﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="Salas.aspx.cs" Inherits="Olimpia_Front_End.Salas" %>
 
 <!DOCTYPE html>
 

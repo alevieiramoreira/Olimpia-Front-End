@@ -268,7 +268,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlUserDel
-        public void feedDdlUserDel()
+        public async void feedDdlUserDel()
         {
             if (ddlUserEdit.Text == "")
             {
@@ -300,8 +300,6 @@ namespace Olimpia_Front_End
             }
         }
         #endregion
-
-
 
         #region Realizando Logout
         protected void btnLogoutUsers_Click(object sender, EventArgs e)

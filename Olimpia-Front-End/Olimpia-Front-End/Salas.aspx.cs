@@ -21,6 +21,7 @@ namespace Olimpia_Front_End
             feedDdlUserSalaEdit();
             feedDdlSalaEdit();
             feedDdlSalaDel();
+            //getNumbMachines();
 
             #region Recuperando Sessão
             // Recupera usuario da sessão
@@ -215,7 +216,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlUserSala
-        public void feedDdlUserSala()
+        public async void feedDdlUserSala()
         {
             if (ddlUserSala.Text == "")
             {
@@ -249,7 +250,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlUserSala
-        public void feedDdlUserSalaEdit()
+        public async void feedDdlUserSalaEdit()
         {
             if (ddlUserSalaEdit.Text == "")
             {
@@ -283,7 +284,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlSalaEdit
-        public void feedDdlSalaEdit()
+        public async void feedDdlSalaEdit()
         {
             if (ddlSalaEdit.Text == "")
             {
@@ -316,7 +317,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlSalaDel
-        public void feedDdlSalaDel()
+        public async void feedDdlSalaDel()
         {
             if (ddlSalaDel.Text == "")
             {
@@ -348,6 +349,62 @@ namespace Olimpia_Front_End
         }
         #endregion
 
+        #region Obtendo qtd de máquinas
+
+        public void getNumbMachines()
+        {
+            if (!this.IsPostBack)
+            {
+                int numClass = 0;
+                string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
+                using (SqlConnection conn0 = new SqlConnection(strConn))
+                {
+                    conn0.Open();
+                    using (SqlCommand cmdGetNumClass = new SqlCommand($"SELECT COUNT(IDCLASS) 'SALAS' FROM CLASS WHERE idCompany='{getSessionidCompany()}'", conn0))
+                    {
+                        numClass = (int)cmdGetNumClass.ExecuteScalar();
+                    }
+                    conn0.Close();
+
+                    using (SqlConnection conn1 = new SqlConnection(strConn))
+                    {
+                        conn1.Open();
+
+                        int cont = 0;
+                        while (cont < numClass)
+                        {
+                            using (SqlCommand cmdGetNumMach = new SqlCommand($"SELECT ROW_NUMBER() OVER (ORDER BY Class.idClass) 'NUMERO', Machines.idClass, Class.idClass FROM Machines, Class WHERE Machines.idClass={cont} and Class.idClass={cont}", conn1))
+                            {
+                                using (SqlDataReader reader = cmdGetNumMach.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                    {
+                                        int NumMach = Convert.ToInt32(reader[0]);
+
+                                        SqlConnection conn2 = new SqlConnection(strConn);
+                                        conn2.Open();
+                                        using (SqlCommand cmdUpdate = new SqlCommand($"UPDATE CLASS SET NUMBEROFMACHINES='{NumMach}' WHERE IDCLASS='{cont}' AND IDCOMPANY='{getSessionidCompany()}'", conn2))
+                                        {
+                                            cmdUpdate.ExecuteNonQuery();
+                                        }
+                                        conn2.Close();
+                                    }
+                                }
+
+                            }
+                            cont++;
+                        }
+                        conn1.Close();
+
+                    }
+
+
+                }
+
+            }
+        }
+
+        #endregion
 
         #region Realizando Logout
         protected void btnLogoutUsers_Click(object sender, EventArgs e)

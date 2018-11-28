@@ -6,9 +6,9 @@ using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Olimpia_Front_End
+namespace Olimpia_Front_End 
 {
-    public partial class Maquinas : System.Web.UI.Page
+    public partial class Maquinas :  System.Web.UI.Page 
     {
 
         protected void Page_Load(object sender, EventArgs e)
@@ -188,7 +188,7 @@ namespace Olimpia_Front_End
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('3')", true);
             }
-            
+
 
 
 
@@ -250,6 +250,7 @@ namespace Olimpia_Front_End
                             }
                         }
                         repopularDataTable();
+                        getNumbMachines();
                     }
                     else
                     {
@@ -353,7 +354,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlEditMachine
-        public void feedDdlEditMachine()
+        public async void feedDdlEditMachine()
         {
             if (ddlSala.Text == "")
             {
@@ -386,7 +387,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlSala
-        public void feedDdlSala()
+        public async void feedDdlSala()
         {
             if (ddlSala.Text == "")
             {
@@ -420,7 +421,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlSalaEdit
-        public void feedDdlSalaEdit()
+        public async void feedDdlSalaEdit()
         {
             if (ddlSalaEdit.Text == "")
             {
@@ -453,7 +454,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlDellMachine
-        public void feedDdlDelMachine()
+        public async void feedDdlDelMachine()
         {
             if (ddlSala.Text == "")
             {
@@ -484,6 +485,7 @@ namespace Olimpia_Front_End
             }
         }
         #endregion
+
 
         #region Realizando Logout
         protected void btnLogoutUsers_Click(object sender, EventArgs e)

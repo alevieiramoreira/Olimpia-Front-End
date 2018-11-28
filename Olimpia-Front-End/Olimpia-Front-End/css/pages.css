@@ -101,9 +101,9 @@ button.btn-nav {
     background: white;
     border: 1px solid #cfcecf;
     text-shadow: 0px 0px 0px #fff;
-    box-shadow: 0px 0px 10px #d1cfd1;
+    /*box-shadow: 0px 0px 10px #d1cfd1;
     -moz-box-shadow: 0px 0px 10px #d1cfd1;
-    -webkit-box-shadow: 0px 0px 10px #d1cfd1;
+    -webkit-box-shadow: 0px 0px 10px #d1cfd1;*/
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
