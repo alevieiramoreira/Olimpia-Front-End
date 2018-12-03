@@ -10,6 +10,7 @@ namespace Olimpia_Front_End
 {
     public partial class Maquinas :  System.Web.UI.Page 
     {
+        Models.getIdCompany get = new Models.getIdCompany();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -83,7 +84,7 @@ namespace Olimpia_Front_End
             string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
             using (SqlConnection con = new SqlConnection(strConn))
             {
-                using (SqlCommand cmd = new SqlCommand($"SELECT Machines.idMachines 'Código da Máquina', Machines.CpuName 'Info. Processador', Machines.HdTotal 'HD Total', Machines.RamTotal 'Memória RAM Total' , Machines.IP, Class.Class 'Sala' FROM Machines, Class WHERE Machines.idClass=Class.idClass and Machines.idCompany='{getSessionidCompany()}'"))
+                using (SqlCommand cmd = new SqlCommand($"SELECT Machines.idMachines 'Código da Máquina', Machines.CpuName 'Info. Processador', Machines.HdTotal 'HD Total', Machines.RamTotal 'Memória RAM Total' , Machines.IP, Class.Class 'Sala' FROM Machines, Class WHERE Machines.idClass=Class.idClass and Machines.idCompany='{get.getSessionidCompany()}'"))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter())
                     {
@@ -151,38 +152,12 @@ namespace Olimpia_Front_End
             string selecionado = ddlFiltroMaquina.SelectedValue.ToString();
             if (selecionado == "1")
             {
-                DataTable GetDataSala()
-                {
-                    string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
-                    using (SqlConnection con = new SqlConnection(strConn))
-                    {
-                        using (SqlCommand cmd = new SqlCommand($"SELECT Machines.idMachines 'Código da Máquina', Machines.CpuName 'Info. Processador', Machines.HdTotal 'HD Total', Machines.RamTotal 'Memória RAM Total' , Machines.IP, Class.Class 'Sala' FROM Machines, Class WHERE Machines.idClass=Class.idClass and Machines.idCompany='{getSessionidCompany()}'"))
-                        {
-                            using (SqlDataAdapter sda = new SqlDataAdapter())
-                            {
-                                cmd.Connection = con;
-                                sda.SelectCommand = cmd;
-                                using (DataTable dt = new DataTable())
-                                {
-                                    sda.Fill(dt);
-                                    return dt;
-                                }
-                            }
-                        }
-                    }
+                Response.Redirect("ByClass.aspx");
 
-                }
-
-
-
-
-
-
-                //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('1')", true);
             }
             else if (selecionado == "2")
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('2')", true);
+                Response.Redirect("ByUser.aspx");
             }
             else if (selecionado == "3")
             {
@@ -230,6 +205,8 @@ namespace Olimpia_Front_End
 
                     if (reader.Read() == false)
                     {
+                       
+                        
                         string strConnect = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
                         using (SqlConnection connect = new SqlConnection(strConn))
                         {
@@ -240,7 +217,7 @@ namespace Olimpia_Front_End
                             {
                                 cmdAddMachine.Parameters.AddWithValue("@idMachines", txtidMachine.Text);
                                 cmdAddMachine.Parameters.AddWithValue("@idClass", ddlSala.Text);
-                                int idCompany = getSessionidCompany();
+                                int idCompany = get.getSessionidCompany();
                                 cmdAddMachine.Parameters.AddWithValue("@idCompany", idCompany);
 
 
@@ -250,7 +227,7 @@ namespace Olimpia_Front_End
                             }
                         }
                         repopularDataTable();
-                        getNumbMachines();
+                        //getNumbMachines();
                     }
                     else
                     {
@@ -269,34 +246,6 @@ namespace Olimpia_Front_End
                 }
 
             }
-        }
-        #endregion
-
-        #region Método para obter o ID da Empresa
-        public int getSessionidCompany()
-        {
-            int idCompany = 0;
-            string usuario = (string)Session["UserName"];
-            string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
-
-            using (SqlConnection conn3 = new SqlConnection(strConn))
-            {
-                conn3.Open();
-
-                using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT Company.idCompany,  Users.idCompany FROM Company, Users WHERE UserAdmin='{usuario}' or UserName ='{usuario}'", conn3))
-                {
-                    using (SqlDataReader reader = cmdAddMachine.ExecuteReader())
-                    {
-                        while (reader.Read() == true)
-                        {
-                            idCompany = reader.GetInt32(0);
-                        }
-
-                    }
-                }
-            }
-
-            return idCompany;
         }
         #endregion
 
@@ -354,7 +303,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlEditMachine
-        public async void feedDdlEditMachine()
+        public void feedDdlEditMachine()
         {
             if (ddlSala.Text == "")
             {
@@ -366,7 +315,7 @@ namespace Olimpia_Front_End
                     conn2.Open();
 
                     // Cria um comando para excluir o registro cujo Id é o selecionado
-                    using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT idMachines FROM Machines WHERE idCompany = {getSessionidCompany()}", conn2))
+                    using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT idMachines FROM Machines WHERE idCompany = {get.getSessionidCompany()}", conn2))
                     {
 
                         using (SqlDataReader reader = cmdAddMachine.ExecuteReader())
@@ -387,7 +336,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlSala
-        public async void feedDdlSala()
+        public void feedDdlSala()
         {
             if (ddlSala.Text == "")
             {
@@ -399,7 +348,7 @@ namespace Olimpia_Front_End
                     conn2.Open();
 
                     // Cria um comando para excluir o registro cujo Id é o selecionado
-                    using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT idClass, Class FROM Class WHERE idCompany = {getSessionidCompany()}", conn2))
+                    using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT idClass, Class FROM Class WHERE idCompany = {get.getSessionidCompany()}", conn2))
                     {
 
                         using (SqlDataReader reader = cmdAddMachine.ExecuteReader())
@@ -421,7 +370,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlSalaEdit
-        public async void feedDdlSalaEdit()
+        public void feedDdlSalaEdit()
         {
             if (ddlSalaEdit.Text == "")
             {
@@ -432,7 +381,7 @@ namespace Olimpia_Front_End
 
                     conn2.Open();
 
-                    using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT idClass, Class FROM Class WHERE idCompany = {getSessionidCompany()}", conn2))
+                    using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT idClass, Class FROM Class WHERE idCompany = {get.getSessionidCompany()}", conn2))
                     {
 
                         using (SqlDataReader reader = cmdAddMachine.ExecuteReader())
@@ -454,7 +403,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlDellMachine
-        public async void feedDdlDelMachine()
+        public void feedDdlDelMachine()
         {
             if (ddlSala.Text == "")
             {
@@ -466,7 +415,7 @@ namespace Olimpia_Front_End
                     conn2.Open();
 
                     // Cria um comando para excluir o registro cujo Id é o selecionado
-                    using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT idMachines FROM Machines WHERE idCompany = {getSessionidCompany()}", conn2))
+                    using (SqlCommand cmdAddMachine = new SqlCommand($"SELECT idMachines FROM Machines WHERE idCompany = {get.getSessionidCompany()}", conn2))
                     {
 
                         using (SqlDataReader reader = cmdAddMachine.ExecuteReader())
@@ -486,7 +435,6 @@ namespace Olimpia_Front_End
         }
         #endregion
 
-
         #region Realizando Logout
         protected void btnLogoutUsers_Click(object sender, EventArgs e)
         {
@@ -495,5 +443,11 @@ namespace Olimpia_Front_End
             Response.Redirect("login.aspx");
         }
         #endregion
+        
+        protected void btnIdMachines_Click(object sender, EventArgs e)
+        {           
+            Session["getIdMachine"] = txtGetidMachines.Text;
+            Response.Redirect("dash.aspx");
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="Maquinas.aspx.cs" Inherits="Olimpia_Front_End.Maquinas" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Maquinas.aspx.cs" Inherits="Olimpia_Front_End.Maquinas" %>
 
 <!DOCTYPE html>
 
@@ -23,6 +23,8 @@
 </head>
 <body>
 
+
+    <!-- Início NAV -->
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -57,13 +59,20 @@
         </div>
     </nav>
     <br />
+     <!-- Final NAV -->
+
 
     <div class="container">
         <h1>Gerenciamento de Máquinas</h1>
         <br />
+        <label>Escolha uma máquina para mostrar mais informações:</label><br />
+        <asp:TextBox class="txt-pages" ID="txtGetidMachines" placeholder="Apenas números" runat="server" />
+        <asp:Button runat="server" type="button" Text="Mostrar Informações" CssClass="btn-pages" ID="btnIdMachines" OnClick="btnIdMachines_Click"></asp:Button>
+        <br />
+        <br />
         <button type="button" class="btn-pages" id="btnNewMach" onclick="userView()">Cadastrar Máquina</button>
         <button type="button" class="btn-pages" id="btnNew" onclick="newUser(), feed">Filtrar Máquinas</button>
-        <button type="button" class="btn-pages" onclick="userEdit()" >Editar Máquina</button>
+        <button type="button" class="btn-pages" onclick="userEdit()">Editar Máquina</button>
         <button type="button" class="btn-pages" onclick="userDelete()">Excluir</button>
         <br />
         <br />
@@ -73,8 +82,10 @@
         </div>
     </div>
 
+
+
     <!--input filtrar máquinas-->
-    <div id="box2" style="display: none;">
+    <div class="container" id="box2" style="display: none;">
         <div class="form-group">
             <label>Filtrar máquinas por:</label>
             <asp:DropDownList ID="ddlFiltroMaquina" runat="server">
@@ -86,13 +97,13 @@
             </asp:DropDownList>
         </div>
 
-        <asp:Button Text="Visualizar" type="submit" CssClass="btn-pages" runat="server" ID="btnViewMachine" OnClick="btnViewMachine_Click" />
+        <asp:Button Text="Visualizar" target="_blank" type="submit" CssClass="btn-pages" runat="server" ID="btnViewMachine" OnClick="btnViewMachine_Click" />
         <button type="button" class="btn-pages" id="btnCancel2" onclick="cancelUser()">Cancelar</button>
     </div>
 
     <!--input de editar Sala da máquina-->
 
-    <div id="box3" style="display: none;">
+    <div class="container" id="box3" style="display: none;">
         <div class="form-group">
             <label>Código da Máquina que deseja editar a Sala </label>
             <div class="form-group">
@@ -119,7 +130,7 @@
 
     <!--input de excluir máquina-->
 
-    <div id="box4" style="display: none">
+    <div  class="container" id="box4" style="display: none">
 
         <div class="form-group">
             <label>Escolha a Máquina que deseja EXCLUIR:</label>
@@ -138,7 +149,7 @@
 
     <!--input de cadastrar nova máquina-->
 
-    <div id="box5" style="display: none">
+    <div class="container"  id="box5" style="display: none">
 
         <div class="form-group">
             <label>Insira um <b>código <u>único</u></b> para a Máquina</label>

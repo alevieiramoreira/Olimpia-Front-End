@@ -17,11 +17,11 @@ namespace Olimpia_Front_End
         protected void Page_Load(object sender, EventArgs e)
         {
             //Alimentando as DropDownLists da página
-            feedDdlUserSala();
-            feedDdlUserSalaEdit();
-            feedDdlSalaEdit();
-            feedDdlSalaDel();
-            //getNumbMachines();
+            //feedDdlUserSala();
+            //feedDdlUserSalaEdit();
+            //feedDdlSalaEdit();
+            //feedDdlSalaDel();
+            getNumbMachines();
 
             #region Recuperando Sessão
             // Recupera usuario da sessão
@@ -216,7 +216,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlUserSala
-        public async void feedDdlUserSala()
+        public void feedDdlUserSala()
         {
             if (ddlUserSala.Text == "")
             {
@@ -249,8 +249,8 @@ namespace Olimpia_Front_End
         }
         #endregion
 
-        #region Alimentando a ddlUserSala
-        public async void feedDdlUserSalaEdit()
+        #region Alimentando a ddlUserSalaEdit
+        public void feedDdlUserSalaEdit()
         {
             if (ddlUserSalaEdit.Text == "")
             {
@@ -284,7 +284,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlSalaEdit
-        public async void feedDdlSalaEdit()
+        public void feedDdlSalaEdit()
         {
             if (ddlSalaEdit.Text == "")
             {
@@ -317,7 +317,7 @@ namespace Olimpia_Front_End
         #endregion
 
         #region Alimentando a ddlSalaDel
-        public async void feedDdlSalaDel()
+        public void feedDdlSalaDel()
         {
             if (ddlSalaDel.Text == "")
             {
@@ -371,7 +371,7 @@ namespace Olimpia_Front_End
                         conn1.Open();
 
                         int cont = 0;
-                        while (cont < numClass)
+                        while (cont <= numClass)
                         {
                             using (SqlCommand cmdGetNumMach = new SqlCommand($"SELECT ROW_NUMBER() OVER (ORDER BY Class.idClass) 'NUMERO', Machines.idClass, Class.idClass FROM Machines, Class WHERE Machines.idClass={cont} and Class.idClass={cont}", conn1))
                             {
@@ -414,5 +414,11 @@ namespace Olimpia_Front_End
             Response.Redirect("login.aspx");
         }
         #endregion
+
+        protected void btnNewClass_Click(object sender, EventArgs e)
+        {
+            btnNewClass.OnClientClick = "newUser(); return true;";
+            feedDdlUserSala();
+        }
     }
 }

@@ -67,8 +67,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="ByCPU.aspx" />
+    <Content Include="ByUser.aspx" />
     <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap4.css" />
     <Content Include="css\pages.css" />
+    <Content Include="Dash.aspx" />
+    <Content Include="GraficoHD.aspx" />
+    <Content Include="GraficoRam.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="img\athenablack.png" />
     <Content Include="img\athenagold.png" />
@@ -79,8 +85,14 @@
     <Content Include="img\olimpogold.png" />
     <Content Include="img\olimpowhite.png" />
     <Content Include="js\changeBox.js" />
+    <Content Include="GraficoCpu.aspx" />
+    <Content Include="js\donutchart.js" />
+    <Content Include="js\HideShowSections.js" />
+    <Content Include="js\linechart.js" />
+    <Content Include="js\piechart.js" />
     <Content Include="js\sourceTable.js" />
     <Content Include="js\switch.js" />
+    <Content Include="ByClass.aspx" />
     <Content Include="Maquinas.aspx" />
     <Content Include="responsive\bootstrap\css\bootstrap.css.map" />
     <Content Include="responsive\bootstrap\css\bootstrap.min.css.map" />
@@ -135,6 +147,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ByCPU.aspx.cs">
+      <DependentUpon>ByCPU.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ByCPU.aspx.designer.cs">
+      <DependentUpon>ByCPU.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ByUser.aspx.cs">
+      <DependentUpon>ByUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ByUser.aspx.designer.cs">
+      <DependentUpon>ByUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cadastro.aspx.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -142,8 +168,29 @@
     <Compile Include="Cadastro.aspx.designer.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dash.aspx.cs">
+      <DependentUpon>Dash.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dash.aspx.designer.cs">
+      <DependentUpon>Dash.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GraficoHD.aspx.cs">
+      <DependentUpon>GraficoHD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GraficoHD.aspx.designer.cs">
+      <DependentUpon>GraficoHD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GraficoRam.aspx.cs">
+      <DependentUpon>GraficoRam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GraficoRam.aspx.designer.cs">
+      <DependentUpon>GraficoRam.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -152,12 +199,26 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GraficoCpu.aspx.cs">
+      <DependentUpon>GraficoCpu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GraficoCpu.aspx.designer.cs">
+      <DependentUpon>GraficoCpu.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ByClass.aspx.cs">
+      <DependentUpon>ByClass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ByClass.aspx.designer.cs">
+      <DependentUpon>ByClass.aspx</DependentUpon>
     </Compile>
     <Compile Include="Maquinas.aspx.cs">
       <DependentUpon>Maquinas.aspx</DependentUpon>
@@ -166,7 +227,13 @@
     <Compile Include="Maquinas.aspx.designer.cs">
       <DependentUpon>Maquinas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Metodos.cs" />
+    <Compile Include="Models\getIdCompany.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Models\idMachine.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Models\LeituraCpu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Salas.aspx.cs">
       <DependentUpon>Salas.aspx</DependentUpon>
@@ -185,7 +252,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="MachinesFilters\" />
     <Folder Include="System\Windows\" />
   </ItemGroup>
   <PropertyGroup>

@@ -1,17 +1,10 @@
-﻿using System;
-using System.Configuration;
-using System.Data;
+﻿using System.Configuration;
 using System.Data.SqlClient;
-using System.Text;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
-namespace Olimpia_Front_End
+namespace Olimpia_Front_End.Models
 {
-    public class Metodos
+    public class getIdCompany : System.Web.UI.Page
     {
-
-        #region Método para obter o ID da Empresa
         public int getSessionidCompany()
         {
             int idCompany = 0;
@@ -37,10 +30,5 @@ namespace Olimpia_Front_End
 
             return idCompany;
         }
-        #endregion
-
-
-
-
     }
 }

@@ -89,7 +89,7 @@
     </div>
 
     <!--input de cadastrar usuário-->
-    <div id="box2" style="display: none;">
+    <div class="container"  id="box2" style="display: none;">
         <div class="form-group">
             <label>Nome do Usuário</label>
             <asp:TextBox class="form-control" placeholder="Nome" ID="txtUserName" runat="server" />
@@ -114,7 +114,7 @@
 
     <!--input de editar usuário-->
 
-    <div id="box3" style="display: none;">
+    <div  class="container" id="box3" style="display: none;">
         <div class="form-group">
             <label>Selecione o usuário que deseja editar:</label>
             <br />
@@ -143,7 +143,7 @@
 
     <!--input de excluir usuário-->
 
-    <div id="box4" style="display: none">
+    <div class="container"  id="box4" style="display: none">
         <div class="form-group">
             <label>Selecione o usuário que deseja EXCLUIR:</label>
             <br />
@@ -156,7 +156,7 @@
         <button type="button" class="btn-pages" id="btnCancel1" onclick="cancelDelete()">Cancelar</button>
     </div>
 
-    <div id="box5" style="display: none">
+    <div class="container"  id="box5" style="display: none">
 
         <div class="form-group">
             <label>Digite a ID do usuário para ver suas salas</label>
@@ -168,7 +168,7 @@
         <button type="button" class="btn-pages" id="btnCancel1" onclick="cancelDelete()">Cancelar</button>
     </div>
 
-    <div id="box6">
+    <div  class="container" id="box6">
 
 
         <asp:PlaceHolder ID="PlaceHolder4" runat="server" />

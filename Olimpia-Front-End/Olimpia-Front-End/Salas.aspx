@@ -1,4 +1,4 @@
-﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="Salas.aspx.cs" Inherits="Olimpia_Front_End.Salas" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Salas.aspx.cs" Inherits="Olimpia_Front_End.Salas" %>
 
 <!DOCTYPE html>
 
@@ -40,9 +40,6 @@
                     <li class="nav-link"><a href="faq.aspx">F.A.Q</a></li>
                     <li class="nav-link"><a href="contate.aspx">Contate-nos</a></li>
 
-
-
-
                 </ul>
                 <form runat="server">
                     <div class="btn-group navbar-right">
@@ -69,7 +66,7 @@
     <div class="container">
         <h1>Gerenciamento de Salas</h1>
         <br />
-        <button type="button" class="btn-pages" id="btnNew" onclick="newUser()">Cadastrar Nova Sala</button>
+        <asp:Button runat="server" type="button" Text="Cadastrar Nova Sala" CssClass="btn-pages" ID="btnNewClass" OnClick="btnNewClass_Click" />
         <button type="button" class="btn-pages" onclick="userEdit()">Editar</button>
         <button type="button" class="btn-pages" onclick="userDelete()">Excluir</button>
 
@@ -87,7 +84,7 @@
     </div>
 
     <!--input de cadastrar salas-->
-    <div id="box2" style="display: none;">
+    <div  class="container" id="box2" style="display: none;">
         <div class="form-group">
             <label>Nome da Sala:</label>
             <asp:TextBox class="form-control" placeholder="Ex: Digital 1" ID="txtClassName" runat="server" />
@@ -108,7 +105,7 @@
 
     <!--input de editar sala-->
 
-    <div id="box3" style="display: none;">
+    <div  class="container" id="box3" style="display: none;">
         <div class="form-group">
             <label>Escolha a sala que deseja editar:</label>
             <br />
@@ -135,7 +132,7 @@
 
     <!--input de excluir usuário-->
 
-    <div id="box4" style="display: none">
+    <div class="container"  id="box4" style="display: none">
         <div class="form-group">
             <label>Selecione a Sala que deseja EXCLUIR:</label>
             <br />
