@@ -66,10 +66,9 @@
     <div class="container">
         <h1>Gerenciamento de Salas</h1>
         <br />
-        <asp:Button runat="server" type="button" Text="Cadastrar Nova Sala" CssClass="btn-pages" ID="btnNewClass" OnClick="btnNewClass_Click" />
+        <button type="button" class="btn-pages" onclick="newUser()">Cadastrar Nova Sala</button> 
         <button type="button" class="btn-pages" onclick="userEdit()">Editar</button>
         <button type="button" class="btn-pages" onclick="userDelete()">Excluir</button>
-
         <br />
         <br />
 

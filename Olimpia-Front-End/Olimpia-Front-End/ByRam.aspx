@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ByCPU.aspx.cs" Inherits="Olimpia_Front_End.ByCPU" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ByRam.aspx.cs" Inherits="Olimpia_Front_End.ByRam" %>
 
 <!DOCTYPE html>
 
@@ -62,7 +62,7 @@
 
 
     <div class="container">
-        <h1>Filtro por CPU</h1>
+        <h1>Filtro por RAM</h1>
         <br />
         <br />
         <label>Escolha uma máquina para mostrar mais informações:</label><br />

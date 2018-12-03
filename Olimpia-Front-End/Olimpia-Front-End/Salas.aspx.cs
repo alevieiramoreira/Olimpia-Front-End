@@ -13,15 +13,29 @@ namespace Olimpia_Front_End
 {
     public partial class Salas : System.Web.UI.Page
     {
+        private int countClass;
+
+        public void addNumClass()
+        {
+            countClass = countClass + 1;
+
+        }
+
+        public int getNumClass()
+        {
+            return countClass;
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             //Alimentando as DropDownLists da página
-            //feedDdlUserSala();
-            //feedDdlUserSalaEdit();
-            //feedDdlSalaEdit();
-            //feedDdlSalaDel();
-            getNumbMachines();
+
+            feedDdlUserSala();
+            feedDdlUserSalaEdit();
+            feedDdlSalaEdit();
+            feedDdlSalaDel();
+
+
 
             #region Recuperando Sessão
             // Recupera usuario da sessão
@@ -64,7 +78,9 @@ namespace Olimpia_Front_End
                 //Building the Data rows.
                 foreach (DataRow row in dt.Rows)
                 {
+                    addNumClass();
                     html.Append("<tr>");
+
                     foreach (DataColumn column in dt.Columns)
                     {
                         html.Append("<td>");
@@ -81,8 +97,12 @@ namespace Olimpia_Front_End
 
                 //Append the HTML string to Placeholder.
                 PlaceHolder2.Controls.Add(new Literal { Text = html.ToString() });
+
+                getNumbMachines();
             }
         }
+
+
 
         private DataTable GetData()
         {
@@ -355,57 +375,45 @@ namespace Olimpia_Front_End
         {
             if (!this.IsPostBack)
             {
-                int numClass = 0;
+
                 string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
-                using (SqlConnection conn0 = new SqlConnection(strConn))
+                using (SqlConnection conn1 = new SqlConnection(strConn))
                 {
-                    conn0.Open();
-                    using (SqlCommand cmdGetNumClass = new SqlCommand($"SELECT COUNT(IDCLASS) 'SALAS' FROM CLASS WHERE idCompany='{getSessionidCompany()}'", conn0))
-                    {
-                        numClass = (int)cmdGetNumClass.ExecuteScalar();
-                    }
-                    conn0.Close();
+                    conn1.Open();
 
-                    using (SqlConnection conn1 = new SqlConnection(strConn))
+                    int cont = 0;
+                    while (cont <= getNumClass())
                     {
-                        conn1.Open();
-
-                        int cont = 0;
-                        while (cont <= numClass)
+                        using (SqlCommand cmdGetNumMach = new SqlCommand($"SELECT ROW_NUMBER() OVER (ORDER BY Class.idClass) 'NUMERO', Machines.idClass, Class.idClass FROM Machines, Class WHERE Machines.idClass={cont} and Class.idClass={cont}", conn1))
                         {
-                            using (SqlCommand cmdGetNumMach = new SqlCommand($"SELECT ROW_NUMBER() OVER (ORDER BY Class.idClass) 'NUMERO', Machines.idClass, Class.idClass FROM Machines, Class WHERE Machines.idClass={cont} and Class.idClass={cont}", conn1))
+                            using (SqlDataReader reader = cmdGetNumMach.ExecuteReader())
                             {
-                                using (SqlDataReader reader = cmdGetNumMach.ExecuteReader())
+                                while (reader.Read())
                                 {
-                                    while (reader.Read())
+                                    int NumMach = Convert.ToInt32(reader[0]);
+
+                                    SqlConnection conn2 = new SqlConnection(strConn);
+                                    conn2.Open();
+                                    using (SqlCommand cmdUpdate = new SqlCommand($"UPDATE CLASS SET NUMBEROFMACHINES='{NumMach}' WHERE IDCLASS='{cont}' AND IDCOMPANY='{getSessionidCompany()}'", conn2))
                                     {
-                                        int NumMach = Convert.ToInt32(reader[0]);
-
-                                        SqlConnection conn2 = new SqlConnection(strConn);
-                                        conn2.Open();
-                                        using (SqlCommand cmdUpdate = new SqlCommand($"UPDATE CLASS SET NUMBEROFMACHINES='{NumMach}' WHERE IDCLASS='{cont}' AND IDCOMPANY='{getSessionidCompany()}'", conn2))
-                                        {
-                                            cmdUpdate.ExecuteNonQuery();
-                                        }
-                                        conn2.Close();
+                                        cmdUpdate.ExecuteNonQuery();
                                     }
+                                    conn2.Close();
                                 }
-
                             }
-                            cont++;
+
                         }
-                        conn1.Close();
-
+                        cont++;
                     }
-
+                    conn1.Close();
 
                 }
 
+
+                //}
+
             }
         }
-
-        #endregion
-
         #region Realizando Logout
         protected void btnLogoutUsers_Click(object sender, EventArgs e)
         {
@@ -414,11 +422,6 @@ namespace Olimpia_Front_End
             Response.Redirect("login.aspx");
         }
         #endregion
-
-        protected void btnNewClass_Click(object sender, EventArgs e)
-        {
-            btnNewClass.OnClientClick = "newUser(); return true;";
-            feedDdlUserSala();
-        }
+        #endregion
     }
 }

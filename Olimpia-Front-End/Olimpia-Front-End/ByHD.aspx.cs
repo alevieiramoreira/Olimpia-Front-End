@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Olimpia_Front_End
 {
-    public partial class ByCPU : System.Web.UI.Page
+    public partial class ByHD : System.Web.UI.Page
     {
         Models.getIdCompany get = new Models.getIdCompany();
 
@@ -80,7 +80,7 @@ namespace Olimpia_Front_End
             using (SqlConnection con = new SqlConnection(strConn))
             {
 
-                using (SqlCommand cmd = new SqlCommand($"SELECT DISTINCT Machines.idMachines 'Código da Máquina', CpuInf.datetime 'Data e Hora', CpuInf.CpuUsage '% Uso da CPU' , Machines.IP, Class.Class 'Sala' FROM Machines, Class, CpuInf WHERE Machines.idClass=Class.idClass and Machines.idCompany='{get.getSessionidCompany()}' AND CpuInf.idMachines=Machines.idMachines AND CpuInf.CpuUsage >= '70'"))
+                using (SqlCommand cmd = new SqlCommand($"SELECT DISTINCT Machines.idMachines 'Código da Máquina', HardDiskInf.datetime 'Data e Hora', HardDiskInf.HdUsage '% Uso do HD' , Machines.IP, Class.Class 'Sala' FROM Machines, Class, HardDiskInf WHERE Machines.idClass=Class.idClass and Machines.idCompany='{get.getSessionidCompany()}' AND RamMemoryInf.idMachines=Machines.idMachines AND HardDiskInf.HDUsage >= '70'"))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter())
                     {

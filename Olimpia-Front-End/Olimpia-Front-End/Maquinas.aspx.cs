@@ -6,9 +6,9 @@ using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Olimpia_Front_End 
+namespace Olimpia_Front_End
 {
-    public partial class Maquinas :  System.Web.UI.Page 
+    public partial class Maquinas : System.Web.UI.Page
     {
         Models.getIdCompany get = new Models.getIdCompany();
 
@@ -153,7 +153,6 @@ namespace Olimpia_Front_End
             if (selecionado == "1")
             {
                 Response.Redirect("ByClass.aspx");
-
             }
             else if (selecionado == "2")
             {
@@ -161,7 +160,15 @@ namespace Olimpia_Front_End
             }
             else if (selecionado == "3")
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('3')", true);
+                Response.Redirect("ByRam.aspx");
+            }
+            else if (selecionado == "4")
+            {
+                Response.Redirect("ByCPU.aspx");
+            }
+            else if (selecionado == "5")
+            {
+                Response.Redirect("ByHD.aspx");
             }
 
 
@@ -205,8 +212,8 @@ namespace Olimpia_Front_End
 
                     if (reader.Read() == false)
                     {
-                       
-                        
+
+
                         string strConnect = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
                         using (SqlConnection connect = new SqlConnection(strConn))
                         {
@@ -443,9 +450,9 @@ namespace Olimpia_Front_End
             Response.Redirect("login.aspx");
         }
         #endregion
-        
+
         protected void btnIdMachines_Click(object sender, EventArgs e)
-        {           
+        {
             Session["getIdMachine"] = txtGetidMachines.Text;
             Response.Redirect("dash.aspx");
         }

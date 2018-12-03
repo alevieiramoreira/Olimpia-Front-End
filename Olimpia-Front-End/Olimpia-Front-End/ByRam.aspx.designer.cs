@@ -10,7 +10,7 @@
 namespace Olimpia_Front_End {
     
     
-    public partial class ByCPU {
+    public partial class ByRam {
         
         /// <summary>
         /// Controle btnLogoutUsers.
