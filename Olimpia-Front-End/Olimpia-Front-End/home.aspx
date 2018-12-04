@@ -46,11 +46,11 @@
                     <li class="nav-link"><a href="home.aspx">Home</a></li>
                     <li class="nav-link"><a href="faq.aspx">F.A.Q</a></li>
                     <li class="nav-link"><a href="contate.aspx">Contate-nos</a></li>
-                    <li class="nav-link"><a href="cadastro.aspx" target="_blank">Cadastre-se</a></li>
-                    <li class="nav-link"><a href="login.aspx" target="_blank">Login</a></li>
+                    <li class="btn-outline-primary btn-sm"><a href="cadastro.aspx" target="_blank">Cadastre-se</a></li>
+                    <li class="btn-outline-primary btn-sm"><a href="login.aspx" target="_blank">Login</a></li>
                 </ul>
             </div>
-        </div>
+        </div> 
     </nav>
 
     <header class="header0 text-center text-white d-flex">
@@ -96,11 +96,46 @@
         </div>
     </header>
 
-    <section>
+  
+    <section style="background-color: #171719;">
+        <div class="container">
+         
+                <div class="card" style="width: 100%;">
+                    <div class="card-body bg-transparent" style="padding: 3rem;">
+                        <h2 class="card-title text-uppercase title-box">Card title</h2>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.
+                            Some quick example text to build on the card title and make up the bulk of the car
+                            Some quick example text to build on the card title and make up the bulk of the car
+                            Some quick example text to build on the card title and make up the bulk of the car
+                            Some quick example text to build on the card title and make up the bulk of the car
+                            Some quick example text to build on the card title and make up the bulk of the car
+                            Some quick example text to build on the card title and make up the bulk of the car
+
+                        </p>
+                    </div>
+               
+                </div>
+
+            </div>
+        
+
+   
+
+   
+
+ 
+        <p class="divider-sections"></p>
+
+
+
+
+   
+
         <div class="container">
             <div class="col-lg-3">
                 <div class="card" style="width: 20rem;">
-                    <div class="card-body bg-dark" style="padding: 3rem;">
+                    <div class="card-body bg-white" style="padding: 3rem;">
                         <h3 class="card-title">Card title</h3>
                         <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -111,19 +146,7 @@
             <div class="col-lg-3">
                 <div class="card" style="width: 20rem;">
 
-                    <div class="card-body bg-dark" style="padding: 3rem;">
-                        <h3 class="card-title">Card title</h3>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-lg-3">
-                <div class="card" style="width: 20rem;">
-
-                    <div class="card-body bg-dark" style="padding: 3rem;">
+                    <div class="card-body bg-white" style="padding: 3rem;">
                         <h3 class="card-title">Card title</h3>
                         <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -135,7 +158,19 @@
             <div class="col-lg-3">
                 <div class="card" style="width: 20rem;">
 
-                    <div class="card-body bg-dark" style="padding: 3rem;">
+                    <div class="card-body bg-white" style="padding: 3rem;">
+                        <h3 class="card-title">Card title</h3>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="card" style="width: 20rem;">
+
+                    <div class="card-body bg-white" style="padding: 3rem;">
                         <h3 class="card-title">Card title</h3>
                         <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -150,52 +185,7 @@
     <footer>
         <div class="container">
 
-            <div class="col-lg-3">
-                <div class="card" style="width: 25rem;">
-
-                    <div class="card-body" style="padding: 3rem;">
-                        <h2 class="card-title">Card title</h2>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-lg-3">
-                <div class="card" style="width: 25rem;">
-
-                    <div class="card-body" style="padding: 3rem;">
-                        <h2 class="card-title text-white">Card title</h2>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-lg-3">
-                <div class="card" style="width: 25rem;">
-
-                    <div class="card-body" style="padding: 3rem;">
-                        <h2 class="card-title">Card title</h2>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-lg-3">
-                <div class="card" style="width: 25rem;">
-
-                    <div class="card-body" style="padding: 3rem;">
-                        <h2 class="card-title">Card title</h2>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </footer>
 </body>

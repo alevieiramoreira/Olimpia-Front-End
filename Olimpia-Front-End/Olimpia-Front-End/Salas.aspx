@@ -21,7 +21,7 @@
     <!--Efeito JavaScript para trocar Boxes-->
     <script src="js/changeBox.js"></script>
 </head>
-<body>
+<body style="background-color: ghostwhite">
 
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -66,7 +66,7 @@
     <div class="container">
         <h1>Gerenciamento de Salas</h1>
         <br />
-        <button type="button" class="btn-pages" onclick="newUser()">Cadastrar Nova Sala</button> 
+        <button type="button" class="btn-pages-p" onclick="newUser()">Cadastrar Nova Sala</button> 
         <button type="button" class="btn-pages" onclick="userEdit()">Editar</button>
         <button type="button" class="btn-pages" onclick="userDelete()">Excluir</button>
         <br />

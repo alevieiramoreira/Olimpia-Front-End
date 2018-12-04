@@ -50,7 +50,7 @@ namespace Olimpia_Front_End
                 StringBuilder html = new StringBuilder();
 
                 //Table start.
-                html.Append("<table class = 'table'>");
+                html.Append("<table class = 'table table-hover'>");
 
 
                 //Building the Header row.

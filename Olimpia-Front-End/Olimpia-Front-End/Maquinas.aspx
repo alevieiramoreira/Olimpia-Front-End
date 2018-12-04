@@ -21,7 +21,7 @@
     <!--Efeito JavaScript para trocar Boxes-->
     <script src="js/changeBox.js"></script>
 </head>
-<body>
+<body style="background-color: ghostwhite">
 
 
     <!-- Início NAV -->
@@ -62,17 +62,17 @@
      <!-- Final NAV -->
 
 
-    <div class="container">
+    <div class="container" >
         <h1>Gerenciamento de Máquinas</h1>
         <br />
         <label>Escolha uma máquina para mostrar mais informações:</label><br />
         <asp:TextBox class="txt-pages" ID="txtGetidMachines" placeholder="Apenas números" runat="server" />
-        <asp:Button runat="server" type="button" Text="Mostrar Informações" CssClass="btn-pages" ID="btnIdMachines" OnClick="btnIdMachines_Click"></asp:Button>
+        <asp:Button runat="server" type="button" Text="Mostrar Informações" CssClass="btn-pages-show" ID="btnIdMachines" OnClick="btnIdMachines_Click"></asp:Button>
         <br />
         <br />
-        <button type="button" class="btn-pages" id="btnNewMach" onclick="userView()">Cadastrar Máquina</button>
-        <button type="button" class="btn-pages" id="btnNew" onclick="newUser(), feed">Filtrar Máquinas</button>
-        <button type="button" class="btn-pages" onclick="userEdit()">Editar Máquina</button>
+        <button type="button" class="btn-pages-p" id="btnNewMach" onclick="userView()">Cadastrar Máquina</button>
+        <button type="button" class="btn-pages" id="btnNew" onclick="newUser(), feed">Filtrar</button>
+        <button type="button" class="btn-pages" onclick="userEdit()">Editar</button>
         <button type="button" class="btn-pages" onclick="userDelete()">Excluir</button>
         <br />
         <br />
@@ -122,7 +122,7 @@
             </asp:DropDownList>
         </div>
 
-        <asp:Button Text="Editar" runat="server" CssClass="btn-pages" ID="btnEditMachine" OnClick="btnEditMachine_Click" />
+        <asp:Button Text="Salvar" runat="server" CssClass="btn-pages" ID="btnEditMachine" OnClick="btnEditMachine_Click" />
         <button type="button" class="btn-pages" id="btnCancel3" onclick="cancelEdit()">Cancelar</button>
     </div>
 
