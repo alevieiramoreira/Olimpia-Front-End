@@ -93,7 +93,7 @@ namespace Olimpia_Front_End
             string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
             using (SqlConnection con = new SqlConnection(strConn))
             {
-                using (SqlCommand cmd = new SqlCommand($"SELECT UserName 'Nome', Email'E-mail' FROM Users where idCompany='{getSessionidCompany()}'"))
+                using (SqlCommand cmd = new SqlCommand($"SELECT UserName 'Nome', Email'E-mail' FROM Users where idCompany='{getSessionidCompany()}' order by UserName"))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter())
                     {

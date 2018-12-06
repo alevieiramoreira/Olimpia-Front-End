@@ -46,8 +46,8 @@
                     <li class="nav-link"><a href="home.aspx">Home</a></li>
                     <li class="nav-link"><a href="faq.aspx">F.A.Q</a></li>
                     <li class="nav-link"><a href="contate.aspx">Contate-nos</a></li>
-                    <li class="btn-outline-primary btn-sm"><a href="cadastro.aspx" target="_blank">Cadastre-se</a></li>
-                    <li class="btn-outline-primary btn-sm"><a href="login.aspx" target="_blank">Login</a></li>
+                    <li class="nav-link"><a href="login.aspx" target="_blank">Login</a></li>
+                    <li class="nav-link"><a href="cadastro.aspx"  style="color:#cb8933" target="_blank">SIGN UP</a></li>
                 </ul>
             </div>
         </div> 

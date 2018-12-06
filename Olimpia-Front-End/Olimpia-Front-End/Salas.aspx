@@ -67,6 +67,7 @@
         <h1>Gerenciamento de Salas</h1>
         <br />
         <button type="button" class="btn-pages-p" onclick="newUser()">Cadastrar Nova Sala</button> 
+        <asp:Button runat="server" CssClass="btn-pages" Text="Atualizar" OnClick="reloadTable_Click" ID="reloadTable" type="button" />
         <button type="button" class="btn-pages" onclick="userEdit()">Editar</button>
         <button type="button" class="btn-pages" onclick="userDelete()">Excluir</button>
         <br />

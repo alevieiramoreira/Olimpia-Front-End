@@ -75,7 +75,6 @@
         <button type="button" class="btn-pages-p" onclick="newUser()" >Cadastrar Novo Usuário</button>
         <button type="button" class="btn-pages" onclick="userEdit()">Editar</button>
         <button type="button" class="btn-pages" onclick="userDelete()">Excluir</button>
-        <button type="button" class="btn-pages" onclick="userView()">Filtrar</button>
         <br />
         <br />
         <div id="table_div"></div>

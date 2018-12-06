@@ -41,15 +41,13 @@ Usem bastante o Inspecionar no navegador, dêem um check na responsividade. ****
             <div class="row">
                 <!--Essas 3 classes definem a estrutura do bg-->
                 <div class="col-lg-10 mx-auto">
-                    <h1 class="text-uppercase">
-                        <strong>Sign In
+                    <h1 class="text-uppercase" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                        <strong style="font">Login
                         </strong>
                         <hr>
                     </h1>
                 </div>
                 <div class="col-lg-8 mx-auto">
-
-                    <p id="login-txt">texto de Referência</p>
 
 
                     <form runat="server">

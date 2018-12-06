@@ -98,7 +98,7 @@ namespace Olimpia_Front_End
                 //Append the HTML string to Placeholder.
                 PlaceHolder2.Controls.Add(new Literal { Text = html.ToString() });
 
-                getNumbMachines();
+
             }
         }
 
@@ -373,47 +373,96 @@ namespace Olimpia_Front_End
 
         public void getNumbMachines()
         {
-            if (!this.IsPostBack)
+
+            string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
+            using (SqlConnection conn1 = new SqlConnection(strConn))
+            {
+                conn1.Open();
+
+                int cont = 0;
+                while (cont <= getNumClass())
+                {
+                    using (SqlCommand cmdGetNumMach = new SqlCommand($"SELECT ROW_NUMBER() OVER (ORDER BY Class.idClass) 'NUMERO', Machines.idClass, Class.idClass FROM Machines, Class WHERE Machines.idClass={cont} and Class.idClass={cont}", conn1))
+                    {
+                        using (SqlDataReader reader = cmdGetNumMach.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                int NumMach = Convert.ToInt32(reader[0]);
+
+                                SqlConnection conn2 = new SqlConnection(strConn);
+                                conn2.Open();
+                                using (SqlCommand cmdUpdate = new SqlCommand($"UPDATE CLASS SET NUMBEROFMACHINES='{NumMach}' WHERE IDCLASS='{cont}' AND IDCOMPANY='{getSessionidCompany()}'", conn2))
+                                {
+                                    cmdUpdate.ExecuteNonQuery();
+                                }
+                                conn2.Close();
+                            }
+                        }
+
+                    }
+                    cont++;
+                }
+                conn1.Close();
+
+            }
+
+
+
+            if (this.IsPostBack)
             {
 
-                string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
-                using (SqlConnection conn1 = new SqlConnection(strConn))
+
+                //Populating a DataTable from database.
+                DataTable dt = this.GetData();
+
+                //Building an HTML string.
+                StringBuilder html = new StringBuilder();
+
+                //Table start.
+                html.Append("<table class = 'table table-hover'>");
+
+
+                //Building the Header row.
+                html.Append("<tr>");
+                foreach (DataColumn column in dt.Columns)
                 {
-                    conn1.Open();
-
-                    int cont = 0;
-                    while (cont <= getNumClass())
-                    {
-                        using (SqlCommand cmdGetNumMach = new SqlCommand($"SELECT ROW_NUMBER() OVER (ORDER BY Class.idClass) 'NUMERO', Machines.idClass, Class.idClass FROM Machines, Class WHERE Machines.idClass={cont} and Class.idClass={cont}", conn1))
-                        {
-                            using (SqlDataReader reader = cmdGetNumMach.ExecuteReader())
-                            {
-                                while (reader.Read())
-                                {
-                                    int NumMach = Convert.ToInt32(reader[0]);
-
-                                    SqlConnection conn2 = new SqlConnection(strConn);
-                                    conn2.Open();
-                                    using (SqlCommand cmdUpdate = new SqlCommand($"UPDATE CLASS SET NUMBEROFMACHINES='{NumMach}' WHERE IDCLASS='{cont}' AND IDCOMPANY='{getSessionidCompany()}'", conn2))
-                                    {
-                                        cmdUpdate.ExecuteNonQuery();
-                                    }
-                                    conn2.Close();
-                                }
-                            }
-
-                        }
-                        cont++;
-                    }
-                    conn1.Close();
+                    html.Append("<th>");
+                    html.Append(column.ColumnName);
+                    html.Append("</th>");
 
                 }
 
+                html.Append("</tr>");
 
-                //}
+                //Building the Data rows.
+                foreach (DataRow row in dt.Rows)
+                {
+                    addNumClass();
+                    html.Append("<tr>");
+
+                    foreach (DataColumn column in dt.Columns)
+                    {
+                        html.Append("<td>");
+                        html.Append(row[column.ColumnName]);
+                        html.Append("</td>");
+
+
+                    }
+                    html.Append("</tr>");
+                }
+
+                //Table end.
+                html.Append("</table>");
+
+                //Append the HTML string to Placeholder.
+                PlaceHolder2.Controls.Add(new Literal { Text = html.ToString() });
+
 
             }
         }
+
+
         #region Realizando Logout
         protected void btnLogoutUsers_Click(object sender, EventArgs e)
         {
@@ -422,6 +471,16 @@ namespace Olimpia_Front_End
             Response.Redirect("login.aspx");
         }
         #endregion
+
         #endregion
+
+
+        protected void reloadTable_Click(object sender, EventArgs e)
+        {
+            getNumClass();
+            getNumbMachines();
+        }
+
     }
 }
+

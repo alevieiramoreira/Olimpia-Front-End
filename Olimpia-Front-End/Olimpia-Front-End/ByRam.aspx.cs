@@ -80,7 +80,7 @@ namespace Olimpia_Front_End
             using (SqlConnection con = new SqlConnection(strConn))
             {
 
-                using (SqlCommand cmd = new SqlCommand($"SELECT DISTINCT Machines.idMachines 'Código da Máquina', RamMemoryInf.datetime 'Data e Hora', RamMemoryInf.RamUsage '% Uso da Mem. RAM' , Machines.IP, Class.Class 'Sala' FROM Machines, Class, RamMemoryInf WHERE Machines.idClass=Class.idClass and Machines.idCompany='{get.getSessionidCompany()}' AND RamMemoryInf.idMachines=Machines.idMachines AND RamMemoryInf.RamUsage >= '70'"))
+                using (SqlCommand cmd = new SqlCommand($"SELECT DISTINCT Machines.idMachines 'Código da Máquina', RamMemoryInf.datetime 'Data e Hora', (RamMemoryInf.RamUsage / (RamMemoryInf.RamUsage + RamMemoryInf.RamAvailable))*100 '% Uso da Mem. RAM' , Machines.IP, Class.Class 'Sala' FROM Machines, Class, RamMemoryInf WHERE Machines.idClass=Class.idClass and Machines.idCompany='{get.getSessionidCompany()}' AND RamMemoryInf.idMachines=Machines.idMachines AND (RamMemoryInf.RamUsage / (RamMemoryInf.RamUsage + RamMemoryInf.RamAvailable))*100 >= '70'"))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter())
                     {

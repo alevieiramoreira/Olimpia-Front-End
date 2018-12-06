@@ -22,6 +22,15 @@ namespace Olimpia_Front_End {
         protected global::System.Web.UI.WebControls.Button btnLogoutUsers;
         
         /// <summary>
+        /// Controle reloadTable.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button reloadTable;
+        
+        /// <summary>
         /// Controle PlaceHolder2.
         /// </summary>
         /// <remarks>
