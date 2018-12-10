@@ -65,8 +65,8 @@
 
 
     <div class="container">
-        <h1>Filtro por Sala</h1>
-        <br />
+        <h1 class="title-pages">Filtro por Sala</h1>
+        <hr style="border-color: #cfcecf; margin-bottom: 10px" />
         <br />
         <label>Escolha a Sala:</label>
         <asp:DropDownList ID="ddlFiltroSala" runat="server">
@@ -78,6 +78,7 @@
         <label>Escolha uma máquina para mostrar mais informações:</label><br />
         <asp:TextBox class="txt-pages" ID="txtGetidMachines" placeholder="Apenas números" runat="server" />
         <asp:Button runat="server" type="button" Text="Mostrar Informações" CssClass="btn-pages-p" ID="btnIdMachines" OnClick="btnIdMachines_Click"></asp:Button>
+        <asp:Button runat="server" CssClass="btn-pages-s" Text="Voltar" ID="btnVoltar" OnClick="btnVoltar_Click" />
         <br />
         <br />
         <div id="table_div"></div>

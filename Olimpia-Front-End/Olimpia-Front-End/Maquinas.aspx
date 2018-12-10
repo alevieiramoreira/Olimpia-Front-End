@@ -25,7 +25,7 @@
 
 
     <!-- Início NAV -->
-        <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -39,7 +39,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
 
                 <ul class="nav navbar-nav">
-                    <li class="nav-link"><a style="padding-top: 1.2rem; margin-left:1rem" href="index.html">Home</a></li>
+                    <li class="nav-link"><a style="padding-top: 1.2rem; margin-left: 1rem" href="index.html">Home</a></li>
                     <li class="nav-link"><a style="padding-top: 1.2rem" href="faq.aspx">F.A.Q</a></li>
                     <li class="nav-link"><a style="padding-top: 1.2rem" href="contate.aspx">Contate-nos</a></li>
                 </ul>
@@ -63,11 +63,12 @@
         </div>
     </nav>
     <br />
-     <!-- Final NAV -->
+    <!-- Final NAV -->
 
 
-    <div class="container" >
-        <h1>Gerenciamento de Máquinas</h1>
+    <div class="container">
+        <h1 class="title-pages">Gerenciamento de Máquinas</h1>
+        <hr style="border-color: #cfcecf; margin-bottom: 10px" />
         <br />
         <label>Escolha uma máquina para mostrar mais informações:</label><br />
         <asp:TextBox class="txt-pages" ID="txtGetidMachines" placeholder="Apenas números" runat="server" />
@@ -138,7 +139,7 @@
 
     <!--input de excluir máquina-->
 
-    <div  class="container" id="box4" style="display: none">
+    <div class="container" id="box4" style="display: none">
 
         <div class="form-group">
             <label>Escolha a Máquina que deseja EXCLUIR:</label>
@@ -157,7 +158,7 @@
 
     <!--input de cadastrar nova máquina-->
 
-    <div class="container"  id="box5" style="display: none">
+    <div class="container" id="box5" style="display: none">
 
         <div class="form-group">
             <label>Insira um <b>código <u>único</u></b> para a Máquina</label>

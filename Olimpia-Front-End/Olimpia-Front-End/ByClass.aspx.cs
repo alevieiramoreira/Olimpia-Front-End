@@ -26,6 +26,7 @@ namespace Olimpia_Front_End.MachinesFilters
                 Response.Redirect("login.aspx");
             }
 
+
             #region Gerando DataTable
 
             if (!this.IsPostBack)
@@ -36,42 +37,47 @@ namespace Olimpia_Front_End.MachinesFilters
                 //Building an HTML string.
                 StringBuilder html = new StringBuilder();
 
+
                 //Table start.
-                html.Append("<table class = 'table'>");
 
-                //Building the Header row.
-                html.Append("<tr>");
-                foreach (DataColumn column in dt.Columns)
-                {
-                    html.Append("<th>");
-                    html.Append(column.ColumnName);
-                    html.Append("</th>");
 
-                }
-
-                html.Append("</tr>");
-
+                html.Append("<div class='card-deck' style='background-color: transparent'>");
                 //Building the Data rows.
                 foreach (DataRow row in dt.Rows)
                 {
-                    html.Append("<tr>");
+                    html.Append("<div class='col-sm-3'>");
+                    html.Append("<div class='card' style='background-color: #fff'");
+
+                    html.Append("<div class='card-body'>");
+                    html.Append("<center>");
+                    html.Append("<img src='img/laptop.png' class='img-card'>");
+                    html.Append("</center>");
+
+
+                    html.Append("<hr>");
+
+
                     foreach (DataColumn column in dt.Columns)
                     {
-                        html.Append("<td>");
-                        html.Append(row[column.ColumnName]);
-                        html.Append("</td>");
-                    }
-                    html.Append("</tr>");
-                }
 
-                //Table end.
-                html.Append("</table>");
+                        html.Append("<h5 class='card-title text-uppercase'>");
+                        html.Append(column.ColumnName);
+                        html.Append("</h5>");
+                        html.Append("<p class='card-text'>");
+                        html.Append(row[column.ColumnName]);
+                        html.Append("</p>");
+                        html.Append("<hr>");
+                    }
+
+                    html.Append("</div>");
+                    html.Append("</div>");
+                }
+                html.Append("</div>");
 
                 //Append the HTML string to Placeholder.
                 PlaceHolder3.Controls.Add(new Literal { Text = html.ToString() });
             }
             #endregion
-
         }
         protected void btnFiltroSala_Click(object sender, EventArgs e)
         {
@@ -85,36 +91,42 @@ namespace Olimpia_Front_End.MachinesFilters
                 //Building an HTML string.
                 StringBuilder html = new StringBuilder();
 
+
                 //Table start.
-                html.Append("<table class = 'table'>");
 
-                //Building the Header row.
-                html.Append("<tr>");
-                foreach (DataColumn column in dt.Columns)
-                {
-                    html.Append("<th>");
-                    html.Append(column.ColumnName);
-                    html.Append("</th>");
 
-                }
-
-                html.Append("</tr>");
-
+                html.Append("<div class='card-deck' style='background-color: transparent'>");
                 //Building the Data rows.
                 foreach (DataRow row in dt.Rows)
                 {
-                    html.Append("<tr>");
+                    html.Append("<div class='col-sm-3'>");
+                    html.Append("<div class='card' style='background-color: #fff'");
+
+                    html.Append("<div class='card-body'>");
+                    html.Append("<center>");
+                    html.Append("<img src='img/group.png' class='img-card'>");
+                    html.Append("</center>");
+
+
+                    html.Append("<hr>");
+
+
                     foreach (DataColumn column in dt.Columns)
                     {
-                        html.Append("<td>");
-                        html.Append(row[column.ColumnName]);
-                        html.Append("</td>");
-                    }
-                    html.Append("</tr>");
-                }
 
-                //Table end.
-                html.Append("</table>");
+                        html.Append("<h5 class='card-title text-uppercase'>");
+                        html.Append(column.ColumnName);
+                        html.Append("</h5>");
+                        html.Append("<p class='card-text'>");
+                        html.Append(row[column.ColumnName]);
+                        html.Append("</p>");
+                        html.Append("<hr>");
+                    }
+
+                    html.Append("</div>");
+                    html.Append("</div>");
+                }
+                html.Append("</div>");
 
                 //Append the HTML string to Placeholder.
                 PlaceHolder3.Controls.Add(new Literal { Text = html.ToString() });
@@ -196,6 +208,11 @@ namespace Olimpia_Front_End.MachinesFilters
         {
             Session["getIdMachine"] = txtGetidMachines.Text;
             Response.Redirect("dash.aspx");
+        }
+
+        protected void btnVoltar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("maquinas.aspx");
         }
     }
 }

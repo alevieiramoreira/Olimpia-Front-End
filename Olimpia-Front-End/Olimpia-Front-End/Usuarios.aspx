@@ -66,12 +66,15 @@
     <br />
 
     <div class="container">
-        <h1>Gerenciamento de Usuários</h1>
+        <h1 class="title-pages">Gerenciamento de Usuários</h1>
+        <hr style="border-color: #cfcecf; margin-bottom: 10px" />
         <br />
         <button type="button" class="btn-pages-p" onclick="newUser()">Cadastrar Novo Usuário</button>
         <button type="button" class="btn-pages" onclick="userEdit()">Editar</button>
         <button type="button" class="btn-pages" onclick="userDelete()">Excluir</button>
         <br />
+        <br />
+        <hr  style="border-color: #cfcecf"/>
         <br />
         <div id="table_div"></div>
         <div id="box1">
@@ -85,7 +88,8 @@
 
     <!--input de cadastrar usuário-->
     <div class="container" id="box2" style="display: none;">
-        <div class="form-group">
+        <div class="new-form">
+         <div class="form-group">
             <label>Nome do Usuário</label>
             <asp:TextBox class="form-control" placeholder="Nome" ID="txtUserName" runat="server" />
         </div>
@@ -102,14 +106,16 @@
             <asp:TextBox type="password" class="form-control" placeholder="Senha" ID="txtUserPwd" runat="server" />
         </div>
 
-        <asp:Button Text="Cadastrar" type="submit" CssClass="btn-pages" runat="server" ID="btnCadastrarUser" OnClick="btnCadastrarUser_Click" />
+        <asp:Button Text="Cadastrar" type="submit" CssClass="btn-pages-s" runat="server" ID="btnCadastrarUser" OnClick="btnCadastrarUser_Click" />
         <button type="button" class="btn-pages" id="btnCancel" onclick="cancelUser()">Cancelar</button>
 
+        </div>
     </div>
 
     <!--input de editar usuário-->
 
     <div class="container" id="box3" style="display: none;">
+      <div class="new-form">
         <div class="form-group">
             <label>Selecione o usuário que deseja editar:</label>
             <br />
@@ -132,42 +138,30 @@
         </div>
 
 
-        <asp:Button Text="Editar" runat="server" CssClass="btn-pages" ID="btnEditarUser" OnClick="btnEditarUser_Click" />
+        <asp:Button Text="Editar" runat="server" CssClass="btn-pages-s" ID="btnEditarUser" OnClick="btnEditarUser_Click" />
         <button type="button" class="btn-pages" id="btnCancel1" onclick="cancelEdit()">Cancelar</button>
+      </div>
     </div>
 
     <!--input de excluir usuário-->
 
     <div class="container" id="box4" style="display: none">
+       <div class="new-form">
         <div class="form-group">
+
             <label>Selecione o usuário que deseja EXCLUIR:</label>
             <br />
             <asp:DropDownList ID="ddlUserDel" runat="server">
                 <asp:ListItem Text="" />
             </asp:DropDownList>
-        </div>
 
-        <asp:Button Text="Deletar" runat="server" CssClass="btn-pages" ID="btnDeleteuser" OnClick="btnDeleteUser_Click" />
+        <asp:Button Text="Deletar" runat="server" CssClass="btn-pages-s" ID="btnDeleteuser" OnClick="btnDeleteUser_Click" />
         <button type="button" class="btn-pages" id="btnCancel1" onclick="cancelDelete()">Cancelar</button>
-    </div>
-
-    <div class="container" id="box5" style="display: none">
-
-        <div class="form-group">
-            <label>Digite a ID do usuário para ver suas salas</label>
-            <asp:TextBox class="form-control" ID="numUserView" placeholder="Apenas números" runat="server" />
+           </div> 
         </div>
-
-
-        <asp:Button Text="Filtrar" runat="server" CssClass="btn-pages" ID="btnUserView" OnClick="btnUserView_Click" />
-        <button type="button" class="btn-pages" id="btnCancel1" onclick="cancelDelete()">Cancelar</button>
     </div>
 
-    <div class="container" id="box6">
-
-
-        <asp:PlaceHolder ID="PlaceHolder4" runat="server" />
-    </div>
+    
 
     </form>      
   

@@ -68,8 +68,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="ByCPU.aspx" />
-    <Content Include="ByHD.aspx" />
-    <Content Include="ByRam.aspx" />
     <Content Include="ByUser.aspx" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
@@ -157,20 +155,6 @@
     </Compile>
     <Compile Include="ByCPU.aspx.designer.cs">
       <DependentUpon>ByCPU.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ByHD.aspx.cs">
-      <DependentUpon>ByHD.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ByHD.aspx.designer.cs">
-      <DependentUpon>ByHD.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ByRam.aspx.cs">
-      <DependentUpon>ByRam.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ByRam.aspx.designer.cs">
-      <DependentUpon>ByRam.aspx</DependentUpon>
     </Compile>
     <Compile Include="ByUser.aspx.cs">
       <DependentUpon>ByUser.aspx</DependentUpon>

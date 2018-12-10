@@ -52,7 +52,7 @@ namespace Olimpia_Front_End
                 //Table start.
 
 
-                html.Append("<div class='card-deck' >");
+                html.Append("<div class='card-deck' style='background-color: transparent'>");
                 //Building the Data rows.
                 foreach (DataRow row in dt.Rows)
                 {
@@ -60,7 +60,10 @@ namespace Olimpia_Front_End
                     html.Append("<div class='card' style='background-color: #fff'");
 
                     html.Append("<div class='card-body'>");
+                    html.Append("<center>");
                     html.Append("<img src='img/group.png' class='img-card'>");
+                    html.Append("</center>");
+
 
                     html.Append("<hr>");
 
@@ -193,14 +196,6 @@ namespace Olimpia_Front_End
 
 
 
-        protected void btnUserView_Click(object sender, EventArgs e)
-        {
-
-            Response.Redirect("Usuarios.aspx" + numUserView);
-
-
-
-        }
 
 
         #endregion
