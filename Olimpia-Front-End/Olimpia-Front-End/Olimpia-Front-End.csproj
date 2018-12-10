@@ -72,6 +72,7 @@
     <Content Include="ByRam.aspx" />
     <Content Include="ByUser.aspx" />
     <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
     <Content Include="css\bootstrap4.css" />
     <Content Include="css\pages.css" />
     <Content Include="Dash.aspx" />

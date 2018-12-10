@@ -375,6 +375,7 @@ namespace Olimpia_Front_End
         {
 
             string strConn = ConfigurationManager.ConnectionStrings["MyDB"].ToString();
+
             using (SqlConnection conn1 = new SqlConnection(strConn))
             {
                 conn1.Open();
@@ -407,11 +408,8 @@ namespace Olimpia_Front_End
 
             }
 
-
-
             if (this.IsPostBack)
             {
-
 
                 //Populating a DataTable from database.
                 DataTable dt = this.GetData();
@@ -477,7 +475,6 @@ namespace Olimpia_Front_End
 
         protected void reloadTable_Click(object sender, EventArgs e)
         {
-            getNumClass();
             getNumbMachines();
         }
 

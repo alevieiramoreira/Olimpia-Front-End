@@ -63,7 +63,7 @@
     background-color: #6b696b;
     color: white;
     border: solid 1px;
-    margin-top: 1rem;;
+    margin-top: 0.7rem;
    
 }
 
@@ -110,7 +110,7 @@ button.btn-nav {
     /*width: 68px;*/
     padding: 0.6rem 1rem;
     cursor: pointer;
-    margin: 0 auto;
+    margin: 0.3rem;
     float: right;
 }
 
@@ -212,4 +212,52 @@ button.btn-nav {
     border: solid 1px;
     height: 3rem;
     margin: 2rem;
+}
+
+.hexagon {
+    position: relative;
+    width: 300px;
+    height: 173.21px;
+    background-color: black;
+    margin: 86.60px 0;
+}
+
+    .hexagon:before,
+    .hexagon:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        border-left: 150px solid transparent;
+        border-right: 150px solid transparent;
+    }
+
+    .hexagon:before {
+        bottom: 100%;
+        border-bottom: 86.60px solid #64C7CC;
+    }
+
+    .hexagon:after {
+        top: 100%;
+        width: 0;
+        border-top: 86.60px solid #64C7CC;
+    }
+
+.card {
+    color: black;
+    border: solid 1px;
+    border-color: #cb8933;
+    margin: 5px;
+    padding: 1rem;
+    border-radius: 10px;
+
+}
+
+.card-body img {
+    align-content: center;
+}
+
+.img-card {
+    width:50%; 
+    height:50%;
+    
 }

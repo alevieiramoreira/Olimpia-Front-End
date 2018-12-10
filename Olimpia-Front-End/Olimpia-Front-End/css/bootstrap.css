@@ -4104,7 +4104,10 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 .nav>li>a {
     position: relative;
     display: block;
-    padding: 10px 15px
+    padding-bottom: 1rem;
+    padding-top:1rem;
+    padding-left:0.5rem;
+    padding-right:0.5rem;
 }
 
 .nav>li>a:focus, .nav>li>a:hover {
@@ -4477,8 +4480,10 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 }
 
 .navbar-nav>li>a {
-    /*padding-top: 10px;
-    padding-bottom: 10px;*/
+    /*padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left:0.5rem;
+    padding-right:0.5rem;*/
     line-height: 20px
 }
 

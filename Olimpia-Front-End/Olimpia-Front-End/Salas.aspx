@@ -23,7 +23,7 @@
 </head>
 <body style="background-color: ghostwhite">
 
-    <nav class="navbar navbar-inverse">
+       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -32,15 +32,17 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="home.aspx">
-                    <img class="navbar-brand" src="img/athenalogogold3.png" /></a>
+                    <img style="float: left" class="navbar-brand" src="img/athenalogogold3.png" /></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li class="nav-link"><a href="index.html">Home</a></li>
-                    <li class="nav-link"><a href="faq.aspx">F.A.Q</a></li>
-                    <li class="nav-link"><a href="contate.aspx">Contate-nos</a></li>
 
+                <ul class="nav navbar-nav">
+                    <li class="nav-link"><a style="padding-top: 1.2rem; margin-left:1rem" href="index.html">Home</a></li>
+                    <li class="nav-link"><a style="padding-top: 1.2rem" href="faq.aspx">F.A.Q</a></li>
+                    <li class="nav-link"><a style="padding-top: 1.2rem" href="contate.aspx">Contate-nos</a></li>
                 </ul>
+
+
                 <form runat="server">
                     <div class="btn-group navbar-right">
 
@@ -57,9 +59,6 @@
                     </div>
             </div>
         </div>
-        </div>
- </div>
-        
     </nav>
     <br>
 

@@ -43,17 +43,20 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="home.aspx">
-                    <img class="navbar-brand" src="img/athenalogogold3.png" /></a>
+                    <img style="float: left" class="navbar-brand" src="img/athenalogogold3.png" /></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
+
                 <ul class="nav navbar-nav">
-                    <li class="nav-link"><a href="index.html">Home</a></li>
-                    <li class="nav-link"><a href="faq.aspx">F.A.Q</a></li>
-                    <li class="nav-link"><a href="contate.aspx">Contate-nos</a></li>
+                    <li class="nav-link"><a style="padding-top: 1.2rem; margin-left: 1rem" href="index.html">Home</a></li>
+                    <li class="nav-link"><a style="padding-top: 1.2rem" href="faq.aspx">F.A.Q</a></li>
+                    <li class="nav-link"><a style="padding-top: 1.2rem" href="contate.aspx">Contate-nos</a></li>
                 </ul>
+
 
                 <form runat="server">
                     <div class="btn-group navbar-right">
+
                         <button type="button" class="dropdown btn-new btn dropdown-toggle" data-toggle="dropdown">
                             <% string usuario = (string)Session["UserName"];
                                 Response.Write($"Bem-vindo(a): {usuario} "); %><span class="caret"></span></button>
@@ -62,10 +65,7 @@
                             <li><a href="Maquinas.aspx">Suas Máquinas</a></li>
                             <li><a href="Usuarios.aspx">Seus Usuários</a></li>
                             <li>
-                                <div style="text-align: center">
-                                    <asp:Button runat="server" CssClass="dropdown-item" Text="Logout" ID="btnLogoutUsers" OnClick="btnLogoutUsers_Click" BackColor="Transparent" />
-                                </div>
-                            </li>
+                                <asp:Button runat="server" CssClass="dropdown-item" Text="Logout" ID="btnLogoutUsers" OnClick="btnLogoutUsers_Click" BackColor="Transparent" /></li>
                         </ul>
                     </div>
                 </form>
@@ -74,14 +74,13 @@
     </nav>
 
 
-
     <div class="container">
 
         <div class="row">
 
             <div class="line-section">
 
-                <button class="btn-pages" onclick="showPrincipalInfo()">+</button>
+                <button class="btn-pages-p" onclick="showPrincipalInfo()">+</button>
                 Informações Principais
             </div>
             <br />
@@ -101,7 +100,7 @@
 
 
             <div class="line-section">
-                <button class="btn-pages" onclick="showCPUInfo()">+</button>
+                <button class="btn-pages-p" onclick="showCPUInfo()">+</button>
                 Informações da CPU
                
             </div>
@@ -116,7 +115,7 @@
 
             <!--FIM-->
             <div class="line-section">
-                <button class="btn-pages" onclick="showHDInfo()">+</button>
+                <button class="btn-pages-p" onclick="showHDInfo()">+</button>
                 Informações de HD e RAM
                
             </div>
@@ -125,8 +124,8 @@
             <!--Sessão das informações de HD E RAM-->
 
             <div id="section-3">
-                <div id="piechart_RAM" style="width: 500px; float: right; height: 650px;"></div>
-                <div id="donutchart" style="width: 500px; float:left; height: 650px;"></div>
+                <div id="piechart_RAM" style="width: 500px; float: left; height: 650px;"></div>
+                <div id="donutchart" style="width: 500px; float: left; height: 650px;"></div>
 
             </div>
         </div>

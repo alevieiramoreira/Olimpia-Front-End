@@ -50,38 +50,38 @@ namespace Olimpia_Front_End
                 StringBuilder html = new StringBuilder();
 
                 //Table start.
-                html.Append("<table class = 'table table-hover'>");
 
 
-                //Building the Header row.
-                html.Append("<tr>");
-                foreach (DataColumn column in dt.Columns)
-                {
-                    html.Append("<th>");
-                    html.Append(column.ColumnName);
-                    html.Append("</th>");
-
-                }
-
-                html.Append("</tr>");
-
+                html.Append("<div class='card-deck' >");
                 //Building the Data rows.
                 foreach (DataRow row in dt.Rows)
                 {
-                    html.Append("<tr>");
+                    html.Append("<div class='col-sm-3'>");
+                    html.Append("<div class='card' style='background-color: #fff'");
+
+                    html.Append("<div class='card-body'>");
+                    html.Append("<img src='img/group.png' class='img-card'>");
+
+                    html.Append("<hr>");
+
+
                     foreach (DataColumn column in dt.Columns)
                     {
-                        html.Append("<td>");
+
+                        html.Append("<h5 class='card-title text-uppercase'>");
+                        html.Append(column.ColumnName);
+                        html.Append("</h5>");
+                        html.Append("<p class='card-text'>");
                         html.Append(row[column.ColumnName]);
-                        html.Append("</td>");
-
-
+                        html.Append("</p>");
+                        html.Append("<hr>");
                     }
-                    html.Append("</tr>");
-                }
 
-                //Table end.
-                html.Append("</table>");
+                    html.Append("</div>");
+                    html.Append("</div>");
+                }
+                html.Append("</div>");
+
 
                 //Append the HTML string to Placeholder.
                 PlaceHolder1.Controls.Add(new Literal { Text = html.ToString() });

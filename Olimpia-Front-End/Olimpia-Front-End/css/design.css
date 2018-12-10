@@ -13,7 +13,7 @@ hr {
 }
 
 a {
-    color: #cb8933;
+    color: white;
     -webkit-transition: all .2s;
     transition: all .2s;
     margin: .5rem;
@@ -165,7 +165,7 @@ e transition é a definição do tempo dessa mudança */
 
 @media (min-width:992px) {
     header.header-back {
-        height: 100vh;
+        /*height: 100vh;*/
         min-height: 650px;
         padding-top: 0;
         padding-bottom: 0
@@ -399,7 +399,7 @@ h1 {
     padding: 1.5%;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
-    border-radius: 50px;
+    border-radius: 12px;
 }
 
 
@@ -415,7 +415,7 @@ h1 {
     font-weight: bold;
     text-transform: uppercase;
     border: none;
-    border-radius: 300px;
+    border-radius: 15px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #fff;
 }
@@ -460,6 +460,7 @@ form {
 
 #link-register {
     padding-right: 4rem;
+    color:white;
 }
 
 .optiontxt1 a {
@@ -492,7 +493,7 @@ form {
     padding: 1.5%;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
-    border-radius: 15px;
+    border-radius: 12px;
 }
 
 .complEnd {
@@ -505,7 +506,7 @@ form {
     padding: 1.5%;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
-    border-radius: 15px;
+    border-radius: 12px;
     width: 60%;
     float: right;
     margin-right: 1rem;
@@ -521,7 +522,7 @@ form {
     padding: 1.5%;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
-    border-radius: 15px;
+    border-radius: 12px;
     width: 15%;
     float: left;
     margin-left: 1rem;
@@ -545,7 +546,7 @@ form {
 
 .header0 {
     width: 100%;
-    height: 100vh;
+    /*height: 100vh;*/
     background: url(../img/athenagold.jpg) 20% 20%;
     background-size: cover;
 }

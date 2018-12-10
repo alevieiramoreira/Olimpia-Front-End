@@ -63,10 +63,10 @@ Usem bastante o Inspecionar no navegador, dêem um check na responsividade. ****
                             <div class="clearfix">
 
                                 <div class="optiontxt1">
-                                    <a href="cadastro.aspx" id="link-register">Registrar</a>
+                                    <a href="cadastro.aspx" id="link-register">Cadastre-se</a>
                                 </div>
                                 <div class="optiontxt1">
-                                    <a href="" id="link-pwd">Esqueceu a senha?</a>
+                                    <a href="Home.aspx" id="link-pwd">Retornar à Home</a>
                                 </div>
                         </br>
                 </div>

@@ -12,7 +12,7 @@
 
     <link rel="shortcut icon" href="img/logoblack.png">
 
-    <title>Olimpia | Sign Up</title>
+    <title>Olimpia | Cadastro</title>
 
     <!-- Bootstrap CSS -->
     <link href="responsive/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@
                 <!--Essas 3 classes definem a estrutura do bg-->
                 <div class="col-lg-10 mx-auto">
                     <h1 class="text-uppercase" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
-                        <strong>SIGN UP
+                        <strong>Cadastro
                         </strong>
                     </h1>
                     <hr/>
